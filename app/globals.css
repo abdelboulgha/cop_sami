@@ -1,67 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500&display=swap');
 
 :root {
-  /* Brand Colors */
+  /* Brand Colors from Charter */
   --c-brown: #6B4828;
   --c-brown-light: #8A643E;
+  --c-brown-dark: #4A3019;
   --c-green: #82BE20;
   --c-green-light: #A5DE46;
   
-  /* Neutral colors for Luxury feel */
-  --c-bg: #FDFCF8; /* slight off-white warm */
-  --c-text: #2A2A2A;
-  --c-text-muted: #595959;
+  /* Neutral Elegance & Luxury Palettes */
+  --c-bg: #FCFBFA; /* Very light creamy white/beige, airy */
+  --c-surface: #FFFFFF;
+  --c-text: #1C1C1A;
+  --c-text-muted: #6B6B66;
+  --c-border: rgba(107, 72, 40, 0.15); /* sublte brown border */
   
-  --c-white: #ffffff;
-  --c-black: #000000;
+  --font-heading: 'Jost', sans-serif;
+  --font-body: 'Outfit', sans-serif;
   
-  /* Layout */
   --spacing-2: 0.5rem;
   --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
   --spacing-8: 2rem;
+  --spacing-12: 3rem;
   --spacing-16: 4rem;
+  --spacing-24: 6rem;
   --spacing-32: 8rem;
+  --spacing-40: 10rem;
   
-  --container-max: 1400px;
+  --container-max: 1600px; /* Wider container for editorial feel */
 }
 
-/* Reset & Basics */
-* {
+/* Reset */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-body);
   background-color: var(--c-bg);
   color: var(--c-text);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography styles */
-h1, h2, h3, h4, h5 {
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: clamp(2.5rem, 5vw, 5rem);
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-}
-
-h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--c-brown-dark);
 }
 
 p {
   font-size: 1.125rem;
   color: var(--c-text-muted);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+strong, b {
+  font-weight: 500;
+  color: var(--c-brown);
 }
 
 a {
@@ -75,10 +78,11 @@ ul {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
-/* Base Layout Classes */
+/* Layout Utilities */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -87,120 +91,111 @@ img {
 }
 
 .section {
-  padding: var(--spacing-32) 0;
+  padding: var(--spacing-40) 0;
 }
 
-.flex {
-  display: flex;
-}
-.flex-col {
-  flex-direction: column;
-}
-.justify-between {
-  justify-content: space-between;
-}
-.justify-center {
-  justify-content: center;
-}
-.align-center {
-  align-items: center;
-}
-.gap-4 {
-  gap: var(--spacing-4);
-}
-.gap-8 {
-  gap: var(--spacing-8);
-}
-.gap-16 {
-  gap: var(--spacing-16);
+@media (max-width: 900px) {
+  .section {
+    padding: var(--spacing-24) 0;
+  }
 }
 
-.text-center {
-  text-align: center;
+/* Typography Classes */
+.heading-display {
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 1;
 }
 
-/* Components */
+.heading-primary {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.heading-secondary {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+}
+
+.subheading {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-green);
+  display: block;
+  margin-bottom: var(--spacing-4);
+}
+
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 28px;
+  padding: 16px 36px;
+  font-family: var(--font-heading);
   font-weight: 500;
-  font-size: 1rem;
-  border-radius: 50px;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0; /* Boxy buttons for modern editorial feel */
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  background-color: var(--c-green);
-  color: var(--c-white);
-  box-shadow: 0 4px 15px rgba(130, 190, 32, 0.4);
+  background-color: var(--c-brown);
+  color: var(--c-surface);
 }
 
 .btn-primary:hover {
-  background-color: var(--c-green-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(130, 190, 32, 0.6);
+  background-color: var(--c-brown-dark);
 }
 
 .btn-outline {
   background: transparent;
   color: var(--c-brown);
-  border: 2px solid var(--c-brown);
+  border-color: var(--c-border);
 }
 
 .btn-outline:hover {
-  background: var(--c-brown);
-  color: var(--c-white);
+  border-color: var(--c-brown);
+  color: var(--c-brown-dark);
 }
 
-/* Animations */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
+/* Custom Image Frame (Editorial style) */
+.img-editorial {
+  position: relative;
+  overflow: hidden;
 }
 
-.glass-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  background: rgba(253, 252, 248, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(107, 72, 40, 0.1);
-  padding: 1.5rem 0;
-  transition: all 0.3s ease;
+.img-editorial::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--c-brown);
+  mix-blend-mode: overlay;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
-.glass-nav.scrolled {
-  padding: 1rem 0;
-  background: rgba(253, 252, 248, 0.95);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+/* Grid splits */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-24);
 }
 
-.badge {
-  display: inline-block;
-  padding: 6px 16px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--c-brown);
-  background: rgba(107, 72, 40, 0.1);
-  border-radius: 30px;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: var(--spacing-16) 0;
-  }
-  .container {
-    padding: 0 var(--spacing-4);
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-12);
   }
 }

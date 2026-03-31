@@ -1,103 +1,139 @@
 .productsSection {
-  background: var(--c-bg);
+  background-color: var(--c-surface); /* Keep it light and ultra premium */
   position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--c-border);
 }
 
 .header {
   text-align: center;
+  margin-bottom: var(--spacing-24);
   max-width: 800px;
-  margin: 0 auto var(--spacing-16);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.heading {
-  color: var(--c-brown);
-  font-size: 3rem;
-  margin-bottom: var(--spacing-4);
+.introDesc {
+  font-size: 1.25rem;
+  margin-top: var(--spacing-6);
+  color: var(--c-text-muted);
 }
 
-.cards {
-  display: flex;
-  gap: var(--spacing-8);
-  justify-content: center;
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-16);
+  padding: 0 var(--spacing-8);
 }
 
 .card {
-  flex: 1;
-  background: var(--c-white);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(130, 190, 32, 0.15);
-}
-
-.cardImageWrapper {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  height: 300px;
-  overflow: hidden;
+  opacity: 0;
+  transform: translateY(60px);
 }
 
-.cardImage {
+.imgFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  margin-bottom: var(--spacing-8);
+  background-color: var(--c-bg); /* subtle backing */
+}
+
+/* Subtle image zoom on hover */
+.img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform-origin: center;
 }
 
-.card:hover .cardImage {
-  transform: scale(1.05);
+.card:hover .img {
+  transform: scale(1.04);
+}
+
+/* Optional thin border overlay for extra premium touch */
+.imgFrame::after {
+  content: '';
+  position: absolute;
+  inset: var(--spacing-4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card:hover .imgFrame::after {
+  opacity: 1;
 }
 
 .cardContent {
-  padding: var(--spacing-8);
-  text-align: center;
+  padding-right: var(--spacing-8);
+}
+
+.cardCategory {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--c-green);
+  margin-bottom: var(--spacing-2);
+  display: block;
 }
 
 .cardTitle {
-  font-size: 1.5rem;
-  color: var(--c-brown);
-  margin-bottom: var(--spacing-2);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  color: var(--c-brown-dark);
+  margin-bottom: var(--spacing-4);
+  line-height: 1.1;
 }
 
 .cardDesc {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
   color: var(--c-text-muted);
-  margin-bottom: var(--spacing-4);
-  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
-.cardAction {
-  color: var(--c-green);
-  font-weight: 700;
+.exploreBtn {
+  margin-top: var(--spacing-6);
   display: inline-flex;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--c-brown-dark);
+  font-size: 0.85rem;
   align-items: center;
-  gap: 8px;
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
 }
 
-.cardAction::after {
+.exploreBtn::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--c-brown);
-  transition: width 0.3s ease;
+  width: 0;
+  height: 1px;
+  background-color: var(--c-brown-dark);
+  transition: width 0.4s ease;
 }
 
-.cardAction:hover::after {
+.exploreBtn:hover::before {
   width: 100%;
 }
 
 @media (max-width: 900px) {
-  .cards {
-    flex-direction: column;
+  .productGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-16);
+    padding: 0;
   }
 }

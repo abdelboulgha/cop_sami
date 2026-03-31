@@ -13,20 +13,23 @@ export default function ProductsInfo() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      const cards = document.querySelectorAll(`.${styles.card}`);
+      const cards = gsap.utils.toArray(`.${styles.card}`);
       
-      gsap.to(cards, {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse'
+      gsap.fromTo(cards, 
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+          }
         }
-      });
+      );
       
     }, containerRef);
     
@@ -38,49 +41,50 @@ export default function ProductsInfo() {
       <div className="container">
         
         <div className={styles.header}>
-          <div className="badge">Gamme d'Exception</div>
-          <h2 className={styles.heading}>L'Or Liquide <span style={{color: 'var(--c-green)'}}>décliné</span></h2>
-          <p>
-            Que ce soit pour sublimer vos plats avec des arômes subtils ou pour sublimer votre peau avec une hydratation profonde, nos produits répondent aux plus hautes exigences.
+          <span className="subheading">Collections d'Excellence</span>
+          <h2 className="heading-primary">Les déclinaisons<br/>de l'<span style={{fontStyle: 'italic', fontWeight: '300', color: 'var(--c-green)'}}>Or Vert</span></h2>
+          <p className={styles.introDesc}>
+            Une approche holistique pour votre bien-être. Profitez de nos procédés d’extraction uniques, qu'il s'agisse de délicatesse culinaire ou de soins corporels.
           </p>
         </div>
 
-        <div className={styles.cards}>
+        <div className={styles.productGrid}>
           
           <div className={styles.card}>
-            <div className={styles.cardImageWrapper}>
-              {/* Fallback image if cosmetics_products is not fully loaded yet, but we generated it */}
+            <div className={styles.imgFrame}>
               <Image 
                 src="/assets/hero_argan_oil.png" 
-                alt="Argan Alimentaire" 
+                alt="Argan Alimentaire 100% Bio" 
                 fill
-                className={styles.cardImage}
+                className={styles.img}
               />
             </div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Gamme Alimentaire</h3>
+              <span className={styles.cardCategory}>Gastronomie</span>
+              <h3 className={styles.cardTitle}>L'Huile Torréfiée</h3>
               <p className={styles.cardDesc}>
-                Huile d'argan torréfiée 100% bio. Un goût raffiné de noisette et d'amande pour accompagner vos salades, couscous, et tagines. Amlou traditionnel au miel.
+                Nos amandons sont doucement grillés pour libérer un parfum léger de noisette grillée. Parfaite pour assaisonner vos salades ou créer le fameux Amlou marocain traditionnel.
               </p>
-              <a href="#" className={styles.cardAction}>Découvrir la saveur →</a>
+              <a href="#" className={styles.exploreBtn}>Découvrir l'Alimentaire</a>
             </div>
           </div>
 
           <div className={styles.card}>
-            <div className={styles.cardImageWrapper}>
+            <div className={styles.imgFrame}>
               <Image 
                 src="/assets/cosmetics_products.png" 
-                alt="Argan Cosmétique" 
+                alt="Argan Cosmétique Pur" 
                 fill
-                className={styles.cardImage}
+                className={styles.img}
               />
             </div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Gamme Cosmétique</h3>
+              <span className={styles.cardCategory}>Beauté & Soins</span>
+              <h3 className={styles.cardTitle}>L'Élixir Cosmétique</h3>
               <p className={styles.cardDesc}>
-                Huile pure non torréfiée, riche en vitamine E et antioxydants. Parfaite pour le soin de la peau, des cheveux et des ongles. Secret de beauté millénaire.
+                Pressée à froid à partir d'amandons non torréfiés. Gorgée de vitamines E et d'acides gras essentiels, c'est l'hydratant anti-âge par excellence pour la peau, les cheveux et les ongles.
               </p>
-              <a href="#" className={styles.cardAction}>Révéler votre beauté →</a>
+              <a href="#" className={styles.exploreBtn}>En savoir plus</a>
             </div>
           </div>
 

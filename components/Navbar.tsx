@@ -16,19 +16,16 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Link href="/" className={styles.logo}>
-        <Image 
-          src="/assets/LOGO-PNG.png" 
-          alt="Argan Product by Sami" 
-          width={150} 
-          height={60} 
+        <Image
+          src="/assets/LOGO-PNG.png"
+          alt="Argan Product by Sami"
+          width={150}
+          height={60}
           style={{ objectFit: 'contain' }}
         />
       </Link>
-      
+
       <div className={styles.navLinks}>
-        <Link href="/" className={styles.link}>
-          {lang === 'fr' ? 'Accueil' : 'الرئيسية'}
-        </Link>
         <Link href="#about" className={styles.link}>
           {lang === 'fr' ? 'À Propos' : 'حول'}
         </Link>
@@ -42,16 +39,16 @@ export default function Navbar() {
           {lang === 'fr' ? 'Contact' : 'اتصل بنا'}
         </Link>
       </div>
-      
+
       <div className={styles.langSwitch}>
-        <button 
+        <button
           className={`${styles.langBtn} ${lang === 'fr' ? styles.active : ''}`}
           onClick={() => setLang('fr')}
         >
           FR
         </button>
         <span className={styles.langSeparator}>|</span>
-        <button 
+        <button
           className={`${styles.langBtn} ${lang === 'ar' ? styles.active : ''}`}
           onClick={() => setLang('ar')}
         >
