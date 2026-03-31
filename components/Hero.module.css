@@ -1,0 +1,89 @@
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--spacing-16);
+  background: var(--c-bg);
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.splineContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Let clicks pass if needed, or adjust */
+}
+
+/* On mobile, hidden or behind */
+@media (max-width: 768px) {
+  .splineContainer {
+    width: 100%;
+    opacity: 0.3;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
+}
+
+.title {
+  color: var(--c-brown);
+  margin-bottom: var(--spacing-4);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.title span {
+  display: block;
+  overflow: hidden;
+}
+
+.title span span {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+.highlight {
+  color: var(--c-green);
+}
+
+.description {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-8);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-4);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+  .actions {
+    flex-direction: column;
+  }
+}

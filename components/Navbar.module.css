@@ -1,0 +1,86 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(253, 252, 248, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107, 72, 40, 0.1);
+  transition: all 0.3s ease;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--spacing-8);
+  align-items: center;
+}
+
+.link {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--c-text);
+  transition: color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.link:hover {
+  color: var(--c-brown);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--c-green);
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.langSwitch {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.langBtn {
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.langBtn.active, .langBtn:hover {
+  color: var(--c-brown);
+}
+
+.langSeparator {
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: none; /* simple mobile hide for now */
+  }
+}

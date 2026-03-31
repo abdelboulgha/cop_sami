@@ -1,26 +1,206 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --c-brown: #6B4828;
+  --c-brown-light: #8A643E;
+  --c-green: #82BE20;
+  --c-green-light: #A5DE46;
+  
+  /* Neutral colors for Luxury feel */
+  --c-bg: #FDFCF8; /* slight off-white warm */
+  --c-text: #2A2A2A;
+  --c-text-muted: #595959;
+  
+  --c-white: #ffffff;
+  --c-black: #000000;
+  
+  /* Layout */
+  --spacing-2: 0.5rem;
+  --spacing-4: 1rem;
+  --spacing-8: 2rem;
+  --spacing-16: 4rem;
+  --spacing-32: 8rem;
+  
+  --container-max: 1400px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reset & Basics */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+p {
+  font-size: 1.125rem;
+  color: var(--c-text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Base Layout Classes */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+}
+
+.section {
+  padding: var(--spacing-32) 0;
+}
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.gap-4 {
+  gap: var(--spacing-4);
+}
+.gap-8 {
+  gap: var(--spacing-8);
+}
+.gap-16 {
+  gap: var(--spacing-16);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Components */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--c-green);
+  color: var(--c-white);
+  box-shadow: 0 4px 15px rgba(130, 190, 32, 0.4);
+}
+
+.btn-primary:hover {
+  background-color: var(--c-green-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(130, 190, 32, 0.6);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--c-brown);
+  border: 2px solid var(--c-brown);
+}
+
+.btn-outline:hover {
+  background: var(--c-brown);
+  color: var(--c-white);
+}
+
+/* Animations */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+}
+
+.glass-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(253, 252, 248, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107, 72, 40, 0.1);
+  padding: 1.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.glass-nav.scrolled {
+  padding: 1rem 0;
+  background: rgba(253, 252, 248, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-brown);
+  background: rgba(107, 72, 40, 0.1);
+  border-radius: 30px;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--spacing-16) 0;
+  }
+  .container {
+    padding: 0 var(--spacing-4);
+  }
 }

@@ -1,0 +1,103 @@
+.productsSection {
+  background: var(--c-bg);
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-16);
+}
+
+.heading {
+  color: var(--c-brown);
+  font-size: 3rem;
+  margin-bottom: var(--spacing-4);
+}
+
+.cards {
+  display: flex;
+  gap: var(--spacing-8);
+  justify-content: center;
+}
+
+.card {
+  flex: 1;
+  background: var(--c-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(130, 190, 32, 0.15);
+}
+
+.cardImageWrapper {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.cardContent {
+  padding: var(--spacing-8);
+  text-align: center;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: var(--c-brown);
+  margin-bottom: var(--spacing-2);
+}
+
+.cardDesc {
+  color: var(--c-text-muted);
+  margin-bottom: var(--spacing-4);
+  font-size: 1rem;
+}
+
+.cardAction {
+  color: var(--c-green);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.cardAction::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--c-brown);
+  transition: width 0.3s ease;
+}
+
+.cardAction:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    flex-direction: column;
+  }
+}
