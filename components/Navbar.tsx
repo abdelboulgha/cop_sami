@@ -26,6 +26,9 @@ export default function Navbar() {
       </Link>
       
       <div className={styles.navLinks}>
+        <Link href="/" className={styles.link}>
+          {lang === 'fr' ? 'Accueil' : 'الرئيسية'}
+        </Link>
         <Link href="#about" className={styles.link}>
           {lang === 'fr' ? 'À Propos' : 'حول'}
         </Link>
