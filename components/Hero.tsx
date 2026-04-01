@@ -84,10 +84,8 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          poster="/assets/hero_poster.jpg"
         >
-          <source src="/assets/hero_video.mp4"  type="video/mp4" />
-          <source src="/assets/hero_video.webm" type="video/webm" />
+          <source src="/videos/Argan_Oil_Cooperative_Brand_Video.mp4" type="video/mp4" />
         </video>
 
         {/* Multi-layer overlay for warmth + readability */}
