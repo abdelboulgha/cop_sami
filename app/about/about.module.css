@@ -1,14 +1,14 @@
 .aboutPage {
-  background-color: var(--c-bg);
+  background-color: var(--c-bg-warm);
   min-height: 100vh;
   padding-bottom: var(--spacing-40);
+  overflow-x: hidden;
 }
 
 /* ── Hero Header ─────────────────────────────────────────────────────────── */
 .heroHeader {
   position: relative;
-  height: 70vh;
-  min-height: 500px;
+  height: 90vh; /* make it larger */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,44 +20,64 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  clip-path: inset(0); /* For parallax pinning */
 }
 
 .heroImageImg {
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center;
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(28, 17, 6, 0.4), rgba(28, 17, 6, 0.7));
+  background: linear-gradient(to bottom, rgba(28, 17, 6, 0.2), rgba(28, 17, 6, 0.7));
   z-index: 1;
 }
 
 .heroText {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 900px;
   padding: 0 var(--spacing-8);
+  margin-top: 10vh; /* visual center balance */
+}
+
+.heroSubtitle {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--c-gold);
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-8);
 }
 
 .heroTitle {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-size: clamp(4rem, 9vw, 8rem);
   font-weight: 300;
   color: #fff;
-  margin-bottom: var(--spacing-6);
   line-height: 1;
   letter-spacing: -0.01em;
+  white-space: pre-line;
 }
 
-.heroSubtitle {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
+/* ── Intro Quote (Huge Drop Cap) ─────────────────────────────────────────── */
+.introQuote {
+  max-width: 900px;
+  margin: var(--spacing-32) auto;
+  text-align: center;
+  padding: 0 var(--spacing-8);
+}
+
+.quoteText {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 300;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  color: var(--c-brown-dark);
+  line-height: 1.25;
+  font-style: italic;
 }
 
 /* ── Content Sections ────────────────────────────────────────────────────── */
@@ -66,31 +86,36 @@
   position: relative;
 }
 
-.sectionAlt {
-  background-color: var(--c-surface); /* White background for contrast */
-}
-
 /* ── Split Block ─────────────────────────────────────────────────────────── */
 .splitBlock {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-24);
+  grid-template-columns: 5fr 7fr;
+  gap: var(--spacing-32);
   align-items: center;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-.splitBlockReverse .textContent {
-  order: 2;
+.splitBlockReverse {
+  grid-template-columns: 7fr 5fr;
 }
-.splitBlockReverse .imageContent {
-  order: 1;
-}
+.splitBlockReverse .textContent { order: 2; }
+.splitBlockReverse .imageContent { order: 1; }
 
 .textContent {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-8);
+  gap: var(--spacing-10);
+  padding: var(--spacing-8);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--c-gold);
 }
 
 .blockTitle {
@@ -99,7 +124,6 @@
   color: var(--c-brown-dark);
   font-weight: 300;
   line-height: 1.1;
-  margin-bottom: var(--spacing-6);
   letter-spacing: -0.01em;
 }
 
@@ -108,8 +132,10 @@
   font-size: 1.05rem;
   color: var(--c-text);
   line-height: 1.8;
+  columns: 1; /* If I want multiple columns for text, but let's stick to 1 for readability */
 }
 
+/* Parallax Box */
 .imageContent {
   position: relative;
   width: 100%;
@@ -117,44 +143,84 @@
   border-radius: var(--radius-md);
   overflow: hidden;
 }
-
+.imageParallaxWrap {
+  position: absolute;
+  top: -15%;
+  height: 130%;
+  width: 100%;
+}
 .splitImg {
   object-fit: cover;
 }
 
-/* ── Callout / Manifesto ─────────────────────────────────────────────────── */
-.manifesto {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  padding: var(--spacing-20) 0;
+/* ── Floating Number Values ──────────────────────────────────────────────── */
+.valuesSection {
+  background: var(--c-surface); /* Clean white */
+  padding: var(--spacing-40) 0;
+  margin: var(--spacing-32) 0;
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
 }
 
-.manifestoText {
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-16);
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.valueCard {
+  padding: var(--spacing-16) var(--spacing-8);
+  border: 1px solid transparent;
+  transition: border-color 0.4s ease;
+}
+.valueCard:hover {
+  border-color: var(--c-gold);
+}
+
+.valueNum {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 5rem;
+  color: var(--c-gold-light);
   font-weight: 300;
+  line-height: 1;
+  margin-bottom: var(--spacing-6);
+  opacity: 0.5;
+}
+
+.valueTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
   color: var(--c-brown-dark);
-  line-height: 1.3;
-  font-style: italic;
-  margin-bottom: var(--spacing-12);
+  margin-bottom: var(--spacing-4);
+  font-weight: 300;
+}
+
+.valueDesc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--c-text-muted);
+  line-height: 1.6;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .splitBlock {
+  .heroTitle { font-size: 4rem; }
+  .splitBlock, .splitBlockReverse {
     grid-template-columns: 1fr;
     gap: var(--spacing-16);
   }
-
-  .splitBlockReverse .textContent {
-    order: 1;
+  .splitBlockReverse .textContent { order: 1; }
+  .splitBlockReverse .imageContent { order: 2; }
+  .imageContent { aspect-ratio: 1; }
+  
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
-  .splitBlockReverse .imageContent {
-    order: 2;
-  }
-
-  .imageContent {
-    aspect-ratio: 16/9;
+  .valueCard {
+    border-bottom: 1px solid var(--c-border);
   }
 }
