@@ -10,10 +10,10 @@ import { useLang } from './LanguageProvider';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { num: '50+',  labelFr: 'Artisanes',       labelAr: 'حرفية' },
-  { num: '30+',  labelFr: "Ans d'expertise", labelAr: 'عامًا من الخبرة' },
-  { num: '100%', labelFr: 'Pur & Naturel',   labelAr: 'نقي وطبيعي' },
-  { num: '3',    labelFr: 'Certifications',  labelAr: 'شهادات' },
+  { num: '50+',  labelFr: 'Artisanes Passionnées',       labelAr: 'حرفية الشغف' },
+  { num: '30+',  labelFr: "Années d'Héritage", labelAr: 'عامًا من التراث' },
+  { num: '100%', labelFr: 'Pureté Absolue',   labelAr: 'نقاء مطلق' },
+  { num: '3',    labelFr: 'Certifications',  labelAr: 'شهادات أصلية' },
 ];
 
 export default function About() {
@@ -25,9 +25,10 @@ export default function About() {
     let ctx = gsap.context(() => {
       // Parallax image
       gsap.fromTo(parallaxImg.current,
-        { y: '-8%' },
+        { y: '-10%', filter: 'saturate(0.5)' },
         {
-          y: '8%',
+          y: '10%',
+          filter: 'saturate(0.8)',
           ease: 'none',
           scrollTrigger: {
             trigger: `.${styles.storyParallax}`,
@@ -40,31 +41,29 @@ export default function About() {
 
       // Quote reveal
       gsap.fromTo(`.${styles.quote}`,
-        { y: 40, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
-          y: 0, opacity: 1, duration: 1.4, ease: 'power3.out',
-          scrollTrigger: { trigger: `.${styles.quote}`, start: 'top 85%' },
+          y: 0, opacity: 1, duration: 1.5, ease: 'power2.out',
+          scrollTrigger: { trigger: `.${styles.quoteBox}`, start: 'top 85%' },
         }
       );
 
-      // Stats count up
-      gsap.utils.toArray(`.${styles.statNum}`).forEach((el: any) => {
-        gsap.fromTo(el,
-          { opacity: 0, y: 24 },
-          {
-            opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 85%' },
-          }
-        );
-      });
+      // Stats
+      gsap.fromTo(`.${styles.statItem}`,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: 'power2.out',
+          scrollTrigger: { trigger: `.${styles.statsWrap}`, start: 'top 85%' },
+        }
+      );
 
       // Text blocks
       gsap.utils.toArray(`.${styles.textBlock}`).forEach((el: any) => {
         gsap.fromTo(el,
-          { y: 50, opacity: 0 },
+          { y: 40, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 1.2, ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 82%', toggleActions: 'play none none reverse' },
+            y: 0, opacity: 1, duration: 1.2, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none reverse' },
           }
         );
       });
@@ -75,43 +74,42 @@ export default function About() {
 
   return (
     <section id="about" className={styles.about} ref={comp}>
-
-      {/* Full-bleed parallax image */}
-      <div className={styles.storyParallax}>
-        <Image
-          ref={parallaxImg}
-          src="/assets/about_argan_tree.png"
-          alt="Argan tree in Souss-Massa, Morocco"
-          fill
-          className={styles.parallaxImage}
-        />
-        <div className={styles.overlay} />
-        <div className={styles.storyContent}>
-          <span className={styles.quoteAccent}>✦</span>
-          <p className={styles.quote}>
-            {t(
-              "Née au cœur des terres du Souss-Massa,\nl'arganier abrite l'or du Maroc.",
-              "نشأت في قلب أراضي سوس ماسة،\nتحتضن شجرة الأركان ذهب المغرب."
-            )}
-          </p>
+      {/* Cinematic Parallax Container */}
+      <div className={`container ${styles.parallaxContainer}`}>
+        <div className={styles.storyParallax}>
+          <Image
+            ref={parallaxImg}
+            src="/assets/about_argan_tree.png"
+            alt="Argan tree in Souss-Massa, Morocco"
+            fill
+            className={styles.parallaxImage}
+          />
         </div>
       </div>
 
-      {/* Stats row */}
-      <div className={styles.statsBar}>
-        <div className="container">
-          <div className={styles.statsGrid}>
-            {stats.map((s, i) => (
-              <div key={i} className={styles.statItem}>
-                <span className={styles.statNum}>{s.num}</span>
-                <span className={styles.statLabel}>{lang === 'ar' ? s.labelAr : s.labelFr}</span>
-              </div>
-            ))}
-          </div>
+      {/* Quote directly beneath */}
+      <div className={`container ${styles.quoteBox}`}>
+        <p className={styles.quote}>
+          {t(
+            "Née au cœur des terres du Souss-Massa, l'arganier abrite l'or véritable du Maroc.",
+            "نشأت في قلب أراضي سوس ماسة، تحتضن شجرة الأركان الذهب الحقيقي للمغرب."
+          )}
+        </p>
+      </div>
+
+      {/* Elegant stats line */}
+      <div className="container">
+        <div className={styles.statsWrap}>
+          {stats.map((s, i) => (
+            <div key={i} className={styles.statItem}>
+              <span className={styles.statNum}>{s.num}</span>
+              <span className={styles.statLabel}>{lang === 'ar' ? s.labelAr : s.labelFr}</span>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Two-column text */}
+      {/* Minimal grid */}
       <div className="container">
         <div className={styles.detailsGrid}>
 
@@ -120,7 +118,6 @@ export default function About() {
               <span className="subheading">{t('Héritage Artisanal', 'تراث حرفي')}</span>
             </div>
             <h3 className={styles.blockTitle}>{t("L'Arbre de Vie", 'شجرة الحياة')}</h3>
-            <div className={styles.goldLineBlock} />
             <p>
               {t(
                 "L'arganier, trésor absolu du Maroc, pousse exclusivement dans la région aride du Souss-Massa. Symbole de résilience et de beauté, ses fruits renferment une huile aux vertus millénaires. Argan Product by Sami s'engage à protéger cet héritage écologique tout en offrant la qualité la plus pure.",
@@ -134,7 +131,6 @@ export default function About() {
               <span className="subheading">{t("L'Éthique", 'الأخلاق')}</span>
             </div>
             <h3 className={styles.blockTitle}>{t("L'Engagement des Femmes", 'التزام النساء')}</h3>
-            <div className={styles.goldLineBlock} />
             <p>
               {t(
                 "Notre huile est le fruit du travail acharné des coopératives de femmes de la région. Ce processus minutieux transmis de génération en génération représente non seulement un savoir-faire inestimable, mais également une source vitale de développement équitable. En choisissant nos produits, vous soutenez directement l'indépendance de plus de 50 artisanes passionnées.",

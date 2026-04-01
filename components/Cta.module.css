@@ -1,133 +1,43 @@
 .ctaSection {
-  position: relative;
-  overflow: hidden;
   background: var(--c-brown-dark);
-  padding: var(--spacing-40) var(--spacing-8);
-}
-
-/* Subtle geometric Moroccan dot pattern */
-.pattern {
-  position: absolute;
-  inset: 0;
-  opacity: 0.04;
-  background-image:
-    radial-gradient(circle, rgba(201, 168, 76, 1) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-}
-
-/* Center warm radial glow */
-.glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  height: 80vw;
-  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 60%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.fadeTop {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, rgba(28,17,6,0.3), transparent);
-  pointer-events: none;
-}
-.fadeBottom {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(to top, rgba(28,17,6,0.3), transparent);
-  pointer-events: none;
-}
-
-/* ── Content ─────────────────────────────────────────────────────────────── */
-.content {
+  padding: var(--spacing-40) 0;
   position: relative;
-  z-index: 2;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.eyebrow {
-  opacity: 0;
-  transform: translateY(20px);
+  max-width: 800px;
 }
 
 .headline {
-  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 300;
-  margin-bottom: var(--spacing-6);
+  color: #fff;
+  line-height: 1.1;
   white-space: pre-line;
-  opacity: 0;
-  transform: translateY(40px);
+  margin-bottom: var(--spacing-16);
+  letter-spacing: -0.01em;
 }
 
-.sub {
-  color: rgba(255,255,255,0.5);
-  font-size: 1rem;
-  max-width: 540px;
-  line-height: 1.8;
-  margin-bottom: var(--spacing-10);
-}
-
-/* ── Buttons ─────────────────────────────────────────────────────────────── */
 .btnRow {
   display: flex;
-  align-items: center;
-  gap: var(--spacing-8);
-  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: var(--spacing-16);
-  opacity: 0;
-  transform: translateY(24px);
 }
 
-.learnMore {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.55);
-  transition: color 0.3s ease, gap 0.3s ease;
+.btnPrimary {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #fff;
 }
-.learnMore:hover { color: #fff; gap: 14px; }
-
-.lmArrow {
-  transition: transform 0.3s ease;
-}
-.learnMore:hover .lmArrow { transform: translateX(4px); }
-body.lang-ar .lmArrow { transform: rotate(180deg); }
-
-/* ── Gold ornament divider ───────────────────────────────────────────────── */
-.ornamentLine {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-4);
-  width: 280px;
-}
-.ornamentLine span:first-child,
-.ornamentLine span:last-child {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
-}
-.ornamentDiamond {
-  color: var(--c-gold);
-  font-size: 0.5rem;
-  opacity: 0.7;
-  flex: none !important;
-  height: auto !important;
-  background: none !important;
+.btnPrimary:hover {
+  background: #fff;
+  color: var(--c-brown-dark);
 }

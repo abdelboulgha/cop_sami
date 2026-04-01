@@ -8,65 +8,49 @@ import { useLang } from './LanguageProvider';
 export default function Hero() {
   const comp     = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   useEffect(() => {
-    // Make sure video plays (some browsers block autoplay)
     if (videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
 
     let ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.3 });
+      const tl = gsap.timeline({ delay: 0.5 });
 
-      // Video slow zoom-in
+      // Ultra smooth video scale
       gsap.fromTo(videoRef.current,
-        { scale: 1.08 },
-        { scale: 1, duration: 6, ease: 'power1.out' }
+        { scale: 1.15, filter: 'saturate(0)' },
+        { scale: 1, filter: 'saturate(0.5)', duration: 10, ease: 'power2.out' }
       );
 
-      // Eyebrow
+      // Fade in eyebrow
       tl.from(`.${styles.eyebrow}`, {
         opacity: 0,
-        y: 20,
-        duration: 1,
+        y: 15,
+        duration: 2,
         ease: 'power3.out',
       })
-      // Word clip-reveal
+      // Staggered title words
       .from(`.${styles.animWord}`, {
-        yPercent: 115,
-        duration: 1.5,
-        stagger: 0.12,
-        ease: 'power4.out',
-      }, '-=0.5')
+        yPercent: 120,
+        duration: 2,
+        stagger: 0.15,
+        ease: 'expo.out',
+      }, '-=1.5')
       // Subtitle
       .from(`.${styles.subtitle}`, {
         opacity: 0,
-        y: 24,
-        duration: 1.2,
-        ease: 'power3.out',
-      }, '-=0.8')
+        duration: 2.5,
+        ease: 'power2.out',
+      }, '-=1.4')
       // CTA
       .from(`.${styles.actions}`, {
         opacity: 0,
-        y: 20,
-        duration: 1,
-        ease: 'power3.out',
-      }, '-=0.7')
-      // Trust row
-      .from(`.${styles.trustRow}`, {
-        opacity: 0,
-        y: 16,
-        duration: 0.9,
-        ease: 'power3.out',
-      }, '-=0.6')
-      // Scroll hint
-      .from(`.${styles.scrollHint}`, {
-        opacity: 0,
-        duration: 1,
+        duration: 2,
         ease: 'power2.out',
-      }, '-=0.3');
-
+      }, '-=1.5');
+      
     }, comp);
 
     return () => ctx.revert();
@@ -74,7 +58,6 @@ export default function Hero() {
 
   return (
     <section className={styles.hero} ref={comp}>
-      {/* ── Full-screen background video ────────────────── */}
       <div className={styles.videoBg}>
         <video
           ref={videoRef}
@@ -87,80 +70,44 @@ export default function Hero() {
         >
           <source src="/videos/Argan_Oil_Cooperative_Brand_Video.mp4" type="video/mp4" />
         </video>
-
-        {/* Multi-layer overlay for warmth + readability */}
-        <div className={styles.overlayGradient} />
-        <div className={styles.overlayColor}    />
-        <div className={styles.overlayVignette} />
+        <div className={styles.overlayColor} />
       </div>
 
-      {/* ── Content ─────────────────────────────────────── */}
       <div className={`container ${styles.heroGrid}`}>
-
-        {/* Left: Typography */}
-        <div className={styles.textColumn}>
-
+        <div className={styles.contentBox}>
           <div className={styles.eyebrow}>
-            <span className={styles.eyebrowDot} />
+            <span className={styles.eyebrowLine} />
             <span className={styles.eyebrowText}>
-              {t('Argan Product by Sami', 'أركان برودكت باي سامي')}
+              {t('Coopérative Familiale — Depuis 1990', 'تعاونية عائلية — منذ 1990')}
             </span>
+            <span className={styles.eyebrowLine} />
           </div>
 
           <h1 className={styles.title}>
             <span className={styles.titleRow}>
               <span className={styles.animWord}>{t("L'Or", "الذهب")}</span>
             </span>
-            <span className={styles.titleRow}>
-              <span className={styles.animWord}>{t("Liquide", "السائل")}</span>
+            <span className={`${styles.titleRow} ${styles.indent}`}>
+              <span className={`${styles.animWord} ${styles.italic}`}>{t("Liquide", "السائل")}</span>
             </span>
-            <span className={`${styles.titleRow} ${styles.titleRowItalic}`}>
+            <span className={`${styles.titleRow}`}>
               <span className={styles.animWord}>{t("du Maroc", "من المغرب")}</span>
             </span>
           </h1>
 
           <p className={styles.subtitle}>
             {t(
-              "Découvrez l'authenticité de l'huile d'argan pure\nissue du terroir marocain.",
-              "اكتشف أصالة زيت الأركان النقي المستخرج\nمن التضاريس المغربية."
+              "Une extraction pure, pressée à froid dans l'héritage de la tradition. Redécouvrez la véritable essence de l'argan.",
+              "استخلاص نقي، معصور على البارد في تراث التقاليد. أعد اكتشاف الجوهر الحقيقي للأركان."
             )}
           </p>
 
           <div className={styles.actions}>
-            <a href="#products" className={styles.btnPrimary}>
-              {t('Découvrir la gamme', 'اكتشف المجموعة')}
+            <a href="#products" className={`btn btn-light ${styles.btnPrimary}`}>
+              {t('Découvrir la Collection', 'اكتشف المجموعة')}
             </a>
-            <a href="#process" className={styles.btnGhost}>
-              {t('Notre savoir-faire', 'خبرتنا')}
-            </a>
-          </div>
-
-          {/* Trust badges */}
-          <div className={styles.trustRow}>
-            <div className={styles.trustBadge}>
-              <span className={styles.badgeNum}>100%</span>
-              <span className={styles.badgeLabel}>{t('Naturel', 'طبيعي')}</span>
-            </div>
-            <div className={styles.trustDivider} />
-            <div className={styles.trustBadge}>
-              <span className={styles.badgeNum}>Bio</span>
-              <span className={styles.badgeLabel}>{t('Certifié', 'معتمد')}</span>
-            </div>
-            <div className={styles.trustDivider} />
-            <div className={styles.trustBadge}>
-              <span className={styles.badgeNum}>50+</span>
-              <span className={styles.badgeLabel}>{t('Artisanes', 'حرفية')}</span>
-            </div>
           </div>
         </div>
-
-
-      </div>
-
-      {/* Scroll hint */}
-      <div className={styles.scrollHint}>
-        <div className={styles.scrollLine} />
-        <span className={styles.scrollLabel}>{t('Défiler', 'تمرير')}</span>
       </div>
     </section>
   );

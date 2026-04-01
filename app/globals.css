@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600;700&family=Outfit:wght@300;400;500&family=Cairo:wght@400;600;700&family=Readex+Pro:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Brand Colors */
-  --c-brown:        #6B4828;
-  --c-brown-light:  #8A643E;
-  --c-brown-dark:   #3C2710;
-  --c-green:        #82BE20;
-  --c-green-light:  #A5DE46;
-  --c-gold:         #C9A84C;
-  --c-gold-light:   #E2C97E;
+  /* Brand Colors - Luxury Edition */
+  --c-brown:        #8C7462;
+  --c-brown-light:  #A38E7E;
+  --c-brown-dark:   #2C241D;
+  --c-green:        #69735A;
+  --c-green-light:  #878F7A;
+  --c-gold:         #CCA770;
+  --c-gold-light:   #DEC498;
 
-  /* Neutrals */
-  --c-bg:           #FBF7F2;
-  --c-bg-warm:      #F5EEE4;
+  /* Neutrals - High-End Apothecary */
+  --c-bg:           #FAFAFA;
+  --c-bg-warm:      #F5F3EC;
   --c-surface:      #FFFFFF;
-  --c-dark:         #1A110A;
-  --c-text:         #1C1C1A;
-  --c-text-muted:   #7A7165;
-  --c-border:       rgba(107, 72, 40, 0.12);
-  --c-border-gold:  rgba(201, 168, 76, 0.3);
+  --c-dark:         #1A1A1A;
+  --c-text:         #2B2B2B;
+  --c-text-muted:   #737373;
+  --c-border:       rgba(0,0,0,0.06);
+  --c-border-gold:  rgba(204,167,112,0.25);
 
   /* Fonts */
   --font-display:  'Cormorant Garamond', Georgia, serif;
@@ -27,7 +27,6 @@
   --font-arabic:   'Readex Pro', 'Cairo', sans-serif;
 
   /* Spacing */
-  --spacing-1:  0.25rem;
   --spacing-1:  0.25rem;
   --spacing-2:  0.5rem;
   --spacing-3:  0.75rem;
@@ -40,18 +39,20 @@
   --spacing-24: 6rem;
   --spacing-32: 8rem;
   --spacing-40: 10rem;
+  --spacing-48: 12rem;
+  --spacing-56: 14rem;
 
   /* Layout */
-  --container-max: 1520px;
-  --radius-sm:     4px;
-  --radius-md:     8px;
-  --radius-lg:     16px;
+  --container-max: 1600px;
+  --radius-sm:     2px;
+  --radius-md:     4px;
+  --radius-lg:     8px;
 
-  /* Shadows */
-  --shadow-sm:  0 4px 16px rgba(60, 39, 16, 0.06);
-  --shadow-md:  0 12px 40px rgba(60, 39, 16, 0.10);
-  --shadow-lg:  0 24px 80px rgba(60, 39, 16, 0.14);
-  --shadow-gold: 0 20px 60px rgba(201, 168, 76, 0.18);
+  /* Shadows - Super subtle */
+  --shadow-sm:  0 4px 20px rgba(0,0,0,0.03);
+  --shadow-md:  0 12px 40px rgba(0,0,0,0.04);
+  --shadow-lg:  0 24px 80px rgba(0,0,0,0.06);
+  --shadow-gold: 0 16px 40px rgba(204,167,112,0.12);
 }
 
 /* ─── Reset ──────────────────────────────────────────────────────────────── */
@@ -84,10 +85,9 @@ body.lang-ar {
 /* ─── Typography ─────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.08;
+  font-weight: 300;
+  line-height: 1.1;
   color: var(--c-brown-dark);
-  letter-spacing: -0.02em;
 }
 
 body.lang-ar h1,
@@ -95,24 +95,28 @@ body.lang-ar h2,
 body.lang-ar h3,
 body.lang-ar h4 {
   font-family: var(--font-arabic);
-  letter-spacing: 0;
 }
 
 p {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--c-text-muted);
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.9;
 }
 
 strong, b {
-  font-weight: 600;
-  color: var(--c-brown);
+  font-weight: 500;
+  color: var(--c-brown-dark);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
 }
 
 ul { list-style: none; }
@@ -143,32 +147,32 @@ img {
 /* ─── Heading Classes ────────────────────────────────────────────────────── */
 .heading-display {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 8vw, 8.5rem);
+  font-size: clamp(4rem, 10vw, 10rem);
   font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
 }
 
 .heading-primary {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
 }
 
 .heading-secondary {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 300;
 }
 
 .subheading {
   font-family: var(--font-heading);
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--c-gold);
+  letter-spacing: 0.25em;
+  font-size: 0.65rem; /* Even smaller, more refined */
+  font-weight: 500;
+  color: var(--c-brown);
   display: block;
   margin-bottom: var(--spacing-4);
 }
@@ -178,58 +182,53 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 16px 42px;
+  gap: 12px;
+  padding: 16px 48px;
   font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 0.82rem;
-  letter-spacing: 0.16em;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   border: 1px solid transparent;
   position: relative;
   overflow: hidden;
   background: transparent;
+  color: var(--c-brown-dark);
 }
 
-/* Primary: filled brown */
+/* Primary: ultra-chic thin bordered dark button */
 .btn-primary {
   background: var(--c-brown-dark);
-  color: #fff;
+  color: var(--c-bg);
   border-color: var(--c-brown-dark);
 }
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+.btn-primary:hover {
   background: var(--c-gold);
-  transform: translateX(-101%);
-  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-color: var(--c-gold);
+  color: var(--c-brown-dark);
 }
-.btn-primary:hover::before { transform: translateX(0); }
-.btn-primary:hover { color: var(--c-brown-dark); }
-.btn-primary span, .btn-primary { position: relative; z-index: 1; }
 
 /* Outline */
 .btn-outline {
   color: var(--c-brown-dark);
-  border-color: rgba(60, 39, 16, 0.4);
+  border-color: var(--c-border);
 }
 .btn-outline:hover {
   background: var(--c-brown-dark);
   border-color: var(--c-brown-dark);
-  color: #fff;
+  color: var(--c-bg);
 }
 
 /* Light (for dark bg) */
 .btn-light {
-  color: #fff;
-  border-color: rgba(255,255,255,0.45);
+  color: var(--c-bg);
+  border-color: rgba(255,255,255,0.2);
 }
 .btn-light:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.8);
+  background: var(--c-bg);
+  color: var(--c-brown-dark);
 }
 
 /* ─── Glassmorphism ───────────────────────────────────────────────────────── */

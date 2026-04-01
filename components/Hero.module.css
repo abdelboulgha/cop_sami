@@ -1,15 +1,13 @@
-/* ── Hero Section ────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 100px;
+  justify-content: center;
   overflow: hidden;
   background: var(--c-dark);
 }
 
-/* ── Background video ────────────────────────────────────────────────────── */
 .videoBg {
   position: absolute;
   inset: 0;
@@ -24,104 +22,88 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  /* Slight desaturation for a warmer, more cinematic look */
-  filter: saturate(0.85) brightness(0.9);
+  /* Filter updated via JS */
   transform-origin: center;
 }
 
-/* Layer 1 — horizontal gradient: dark left → transparent right (for text legibility) */
-.overlayGradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(20, 10, 4, 0.82) 0%,
-    rgba(20, 10, 4, 0.55) 45%,
-    rgba(20, 10, 4, 0.2)  75%,
-    rgba(20, 10, 4, 0.08) 100%
-  );
-}
-
-/* Layer 2 — warm amber/brown colour tint */
 .overlayColor {
   position: absolute;
   inset: 0;
-  background: rgba(60, 30, 8, 0.28);
-  mix-blend-mode: multiply;
+  background: rgba(18, 16, 14, 0.55); /* Elegant dark grey tint */
 }
 
-/* Layer 3 — edge vignette */
-.overlayVignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 40%,
-    rgba(10, 5, 2, 0.55) 100%
-  );
-}
-
-/* ── Grid layout ─────────────────────────────────────────────────────────── */
+/* ── Content ─────────────────────────────────────────────────────────────── */
 .heroGrid {
   position: relative;
   z-index: 2;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
   width: 100%;
-  padding-bottom: var(--spacing-16);
-  max-width: 860px;
+  margin-top: 4vh;
 }
 
-/* ── Text column ─────────────────────────────────────────────────────────── */
-.textColumn {
-  padding-right: 0;
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
 }
 
 /* Eyebrow */
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  margin-bottom: var(--spacing-8);
+  justify-content: center;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-10);
+  opacity: 0;
 }
-.eyebrowDot {
+.eyebrowLine {
   display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--c-gold);
-  flex-shrink: 0;
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
 }
 .eyebrowText {
   font-family: var(--font-heading);
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--c-gold);
+  letter-spacing: 0.3em;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Title */
 .title {
   font-family: var(--font-display);
-  font-size: clamp(4.2rem, 8.5vw, 9.5rem);
+  font-size: clamp(4.5rem, 10vw, 11rem);
   font-weight: 300;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
   color: #fff;
-  margin-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-10);
 }
 
 .titleRow {
   display: block;
   overflow: hidden;
-  line-height: 1.08;
+  line-height: 1.1;
 }
 
-.titleRowItalic .animWord {
+.indent {
+  padding-left: 12%; 
+}
+body.lang-ar .indent {
+  padding-left: 0;
+  padding-right: 12%;
+}
+
+.italic {
   font-style: italic;
-  color: var(--c-gold);
+  color: var(--c-gold-light);
+  font-weight: 300;
+  letter-spacing: -0.02em;
 }
 
 .animWord {
@@ -130,141 +112,37 @@
 
 /* Subtitle */
 .subtitle {
-  font-size: 1.05rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.62);
-  margin-bottom: var(--spacing-10);
-  max-width: 460px;
-  white-space: pre-line;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--spacing-16);
+  max-width: 520px;
   font-weight: 300;
 }
 
-/* CTA buttons */
+/* Actions */
 .actions {
   display: flex;
-  gap: var(--spacing-4);
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: var(--spacing-12);
+  justify-content: center;
+  opacity: 0;
 }
 
-/* Primary button — gold filled */
 .btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  padding: 16px 40px;
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  background: var(--c-gold);
-  color: var(--c-dark);
-  border: 1px solid var(--c-gold);
-  cursor: pointer;
-  transition: background 0.4s ease, color 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
 }
 .btnPrimary:hover {
-  background: var(--c-gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(201, 168, 76, 0.35);
-}
-
-/* Ghost button — transparent white */
-.btnGhost {
-  display: inline-flex;
-  align-items: center;
-  padding: 15px 36px;
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: border-color 0.4s ease, background 0.4s ease, color 0.4s ease;
-  backdrop-filter: blur(4px);
-}
-.btnGhost:hover {
-  border-color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-/* Trust badges */
-.trustRow {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-6);
-}
-.trustBadge {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.badgeNum {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1;
-}
-.badgeLabel {
-  font-family: var(--font-heading);
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.45);
-}
-.trustDivider {
-  width: 1px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-
-/* ── Scroll hint ─────────────────────────────────────────────────────────── */
-.scrollHint {
-  position: absolute;
-  bottom: var(--spacing-8);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-2);
-  z-index: 2;
-}
-.scrollLine {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, rgba(201, 168, 76, 0.8), transparent);
-  animation: scroll-drop 2.2s ease-in-out infinite;
-}
-@keyframes scroll-drop {
-  0%   { transform: scaleY(0); transform-origin: top;    opacity: 1; }
-  50%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
-  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
-}
-.scrollLabel {
-  font-family: var(--font-heading);
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
+  background: #fff;
+  color: var(--c-dark);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .heroGrid { max-width: 100%; }
-  .overlayGradient { background: rgba(20, 10, 4, 0.65); }
-}
-
-@media (max-width: 600px) {
-  .title { font-size: clamp(3.5rem, 14vw, 5.5rem); }
+  .eyebrowLine { width: 20px; }
+  .title { font-size: clamp(3.5rem, 15vw, 6rem); }
   .subtitle { font-size: 0.95rem; }
-  .btnPrimary, .btnGhost { padding: 13px 28px; font-size: 0.72rem; }
+  .indent { padding-left: 0; }
+  body.lang-ar .indent { padding-right: 0; }
 }

@@ -35,16 +35,6 @@ const testimonials = [
   },
 ];
 
-const Stars = () => (
-  <div className={styles.stars} aria-label="5 étoiles">
-    {[...Array(5)].map((_, i) => (
-      <svg key={i} viewBox="0 0 16 16" fill="currentColor" width="14" height="14">
-        <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/>
-      </svg>
-    ))}
-  </div>
-);
-
 export default function Testimonials() {
   const comp  = useRef(null);
   const { lang, t } = useLang();
@@ -55,14 +45,14 @@ export default function Testimonials() {
       gsap.fromTo(`.${styles.labelRow}`,
         { opacity: 0, y: 20 },
         {
-          opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+          opacity: 1, y: 0, duration: 1, ease: 'power2.out',
           scrollTrigger: { trigger: comp.current, start: 'top 80%' },
         }
       );
       gsap.fromTo(`.${styles.quoteWrapper}`,
         { y: 50, opacity: 0 },
         {
-          y: 0, opacity: 1, duration: 1.4, ease: 'power3.out',
+          y: 0, opacity: 1, duration: 1.4, ease: 'power2.out',
           scrollTrigger: { trigger: comp.current, start: 'top 75%' },
         }
       );
@@ -72,10 +62,10 @@ export default function Testimonials() {
 
   const goTo = (i: number) => {
     gsap.to(`.${styles.quoteText}`, {
-      opacity: 0, y: 12, duration: 0.3, ease: 'power2.in',
+      opacity: 0, y: 15, duration: 0.4, ease: 'power2.inOut',
       onComplete: () => {
         setActive(i);
-        gsap.to(`.${styles.quoteText}`, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+        gsap.to(`.${styles.quoteText}`, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
       },
     });
   };
@@ -84,23 +74,17 @@ export default function Testimonials() {
 
   return (
     <section className={styles.section} ref={comp}>
-      <div className={styles.bgAccent} />
-
       <div className="container">
         {/* Top label */}
         <div className={styles.labelRow}>
           <div className={styles.labelLine} />
-          <span className="subheading" style={{ color: 'var(--c-gold)', marginBottom: 0 }}>
+          <span className="subheading" style={{ marginBottom: 0 }}>
             {t('Ils nous font confiance', 'يثقون بنا')}
           </span>
           <div className={styles.labelLine} />
         </div>
 
         <div className={styles.quoteWrapper}>
-          <div className={styles.openQuote} aria-hidden>"</div>
-
-          <Stars />
-
           <p className={styles.quoteText}>
             {lang === 'ar' ? q.quoteAr : q.quoteFr}
           </p>
