@@ -1,15 +1,13 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import styles from './Hero.module.css';
 import gsap from 'gsap';
 import { useLang } from './LanguageProvider';
 
 export default function Hero() {
-  const comp      = useRef<HTMLDivElement>(null);
-  const bottleRef = useRef<HTMLDivElement>(null);
-  const videoRef  = useRef<HTMLVideoElement>(null);
+  const comp     = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useLang();
 
   useEffect(() => {
@@ -69,51 +67,13 @@ export default function Hero() {
         ease: 'power2.out',
       }, '-=0.3');
 
-      // Bottle entrance
-      gsap.from(bottleRef.current, {
-        scale: 0.78,
-        opacity: 0,
-        y: 40,
-        duration: 2.5,
-        ease: 'expo.out',
-        delay: 0.5,
-      });
-
     }, comp);
 
     return () => ctx.revert();
   }, []);
 
-  // Mouse parallax on bottle
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!bottleRef.current) return;
-    const xPos = (e.clientX / window.innerWidth  - 0.5) * 20;
-    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
-    gsap.to(bottleRef.current, {
-      rotationY: xPos,
-      rotationX: -yPos,
-      transformPerspective: 1000,
-      ease: 'power2.out',
-      duration: 1.2,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    gsap.to(bottleRef.current, {
-      rotationY: 0,
-      rotationX: 0,
-      ease: 'power3.out',
-      duration: 1.8,
-    });
-  };
-
   return (
-    <section
-      className={styles.hero}
-      ref={comp}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
+    <section className={styles.hero} ref={comp}>
       {/* ── Full-screen background video ────────────────── */}
       <div className={styles.videoBg}>
         <video
@@ -196,28 +156,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Floating bottle */}
-        <div className={styles.visualColumn}>
-          <div className={styles.bottleHalo} />
-
-          <div className={styles.bottleContainer} ref={bottleRef}>
-            <Image
-              src="/assets/bottle_3d.png"
-              alt="Argan 3D Bottle"
-              fill
-              priority
-              className={styles.bottleImg}
-            />
-          </div>
-
-          {/* Floating glass card */}
-          <div className={styles.floatCard}>
-            <span className={styles.floatCardIcon}>✦</span>
-            <span className={styles.floatCardText}>
-              {t('Extraction artisanale', 'استخراج حرفي')}
-            </span>
-          </div>
-        </div>
 
       </div>
 
