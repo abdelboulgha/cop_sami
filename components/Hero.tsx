@@ -20,8 +20,8 @@ export default function Hero() {
 
       // Ultra smooth video scale
       gsap.fromTo(videoRef.current,
-        { scale: 1.15, filter: 'saturate(0)' },
-        { scale: 1, filter: 'saturate(0.5)', duration: 10, ease: 'power2.out' }
+        { scale: 1.18, filter: 'saturate(0)' },
+        { scale: 1.08, filter: 'saturate(0.5)', duration: 10, ease: 'power2.out' }
       );
 
       // Fade in eyebrow
