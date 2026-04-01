@@ -61,7 +61,9 @@
 body.lang-ar .link::after { left: auto; right: 0; }
 
 .link:hover { color: var(--c-brown); }
-.link:hover::after { width: 100%; }
+.link:hover::after  { width: 100%; }
+.link.active::after { width: 100%; background: var(--c-gold); }
+.link.active { color: var(--c-brown); }
 
 /* ─── Right: lang + hamburger ────────────────────────────────────────── */
 .right {
@@ -89,7 +91,7 @@ body.lang-ar .link::after { left: auto; right: 0; }
   text-transform: uppercase;
   padding: 0;
 }
-.langBtn.active,
+.langBtn.langActive,
 .langBtn:hover { color: var(--c-brown-dark); }
 
 .langSep {

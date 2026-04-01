@@ -4,13 +4,21 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './Navbar.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useLang } from './LanguageProvider';
 
+const navItems = [
+  { href: '/',             labelFr: 'Accueil',      labelAr: 'الرئيسية' },
+  { href: '/produits',     labelFr: 'Produits',     labelAr: 'المنتجات' },
+  { href: '/savoir-faire', labelFr: 'Savoir-Faire', labelAr: 'خبرتنا'   },
+  { href: '/contact',      labelFr: 'Contact',      labelAr: 'اتصل بنا' },
+];
+
 export default function Navbar() {
-  const { lang, setLang, t } = useLang();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
+  const { lang, setLang } = useLang();
+  const pathname = usePathname();
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -18,8 +26,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+
   return (
-    <nav ref={navRef} className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <Link href="/" className={styles.logo}>
         <Image
           src="/assets/LOGO-PNG.png"
@@ -31,25 +42,32 @@ export default function Navbar() {
         />
       </Link>
 
+      {/* Desktop links */}
       <div className={`${styles.navLinks} ${menuOpen ? styles.open : ''}`}>
-        <Link href="/"        className={styles.link} onClick={() => setMenuOpen(false)}>{t('Accueil', 'الرئيسية')}</Link>
-        <Link href="#about"   className={styles.link} onClick={() => setMenuOpen(false)}>{t('À Propos', 'حول')}</Link>
-        <Link href="#products" className={styles.link} onClick={() => setMenuOpen(false)}>{t('Produits', 'منتجات')}</Link>
-        <Link href="#process" className={styles.link} onClick={() => setMenuOpen(false)}>{t('Savoir-Faire', 'خبرتنا')}</Link>
-        <Link href="#contact" className={styles.link} onClick={() => setMenuOpen(false)}>{t('Contact', 'اتصل بنا')}</Link>
+        {navItems.map(item => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`${styles.link} ${pathname === item.href ? styles.active : ''}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            {lang === 'ar' ? item.labelAr : item.labelFr}
+          </Link>
+        ))}
       </div>
 
       <div className={styles.right}>
+        {/* Language switcher */}
         <div className={styles.langSwitch}>
           <button
-            className={`${styles.langBtn} ${lang === 'fr' ? styles.active : ''}`}
+            className={`${styles.langBtn} ${lang === 'fr' ? styles.langActive : ''}`}
             onClick={() => setLang('fr')}
           >
             FR
           </button>
           <span className={styles.langSep} />
           <button
-            className={`${styles.langBtn} ${lang === 'ar' ? styles.active : ''}`}
+            className={`${styles.langBtn} ${lang === 'ar' ? styles.langActive : ''}`}
             onClick={() => setLang('ar')}
           >
             AR

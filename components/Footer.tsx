@@ -65,11 +65,10 @@ export default function Footer() {
           <div className={styles.col}>
             <h4 className={styles.colTitle}>{t('Navigation', 'تصفح')}</h4>
             <nav className={styles.colLinks}>
-              <Link href="/"        className={styles.navLink}>{t('Accueil', 'الرئيسية')}</Link>
-              <Link href="#about"   className={styles.navLink}>{t('À Propos', 'حول')}</Link>
-              <Link href="#process" className={styles.navLink}>{t('Processus', 'عملية الإنتاج')}</Link>
-              <Link href="#products" className={styles.navLink}>{t('Produits', 'المنتجات')}</Link>
-              <Link href="#contact" className={styles.navLink}>{t('Contact', 'اتصل بنا')}</Link>
+              <Link href="/"             className={styles.navLink}>{t('Accueil', 'الرئيسية')}</Link>
+              <Link href="/produits"     className={styles.navLink}>{t('Produits', 'المنتجات')}</Link>
+              <Link href="/savoir-faire" className={styles.navLink}>{t('Savoir-Faire', 'خبرتنا')}</Link>
+              <Link href="/contact"      className={styles.navLink}>{t('Contact', 'اتصل بنا')}</Link>
             </nav>
           </div>
 

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import LayoutWrapper from "../components/LayoutWrapper";
 
 export const metadata: Metadata = {
-  title: "Argan Product by Sami | Cooperative Cop Sami",
-  description: "Cooperative spécialisée dans les produits d'argan, alimentaire et cosmétique de haute qualité.",
+  title: "Argan Product by Sami | Coopérative Artisanale",
+  description: "Coopérative artisanale spécialisée dans les produits d'argan 100% naturels — huile alimentaire et cosmétique du Souss-Massa, Maroc.",
 };
 
 export default function RootLayout({
@@ -13,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
+      </body>
     </html>
   );
 }
