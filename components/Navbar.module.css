@@ -2,24 +2,34 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-4) var(--spacing-8);
+  padding: 22px var(--spacing-8);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(253, 252, 248, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(107, 72, 40, 0.1);
-  transition: all 0.3s ease;
+  transition: padding 0.5s ease, background 0.5s ease, box-shadow 0.5s ease;
+  background: transparent;
 }
 
+.navbar.scrolled {
+  padding: 14px var(--spacing-8);
+  background: rgba(251, 247, 242, 0.82);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 0 1px 0 rgba(107, 72, 40, 0.08), 0 8px 32px rgba(60, 39, 16, 0.06);
+}
+
+/* ─── Logo ───────────────────────────────────────────────────────────── */
 .logo img {
-  height: 60px;
+  height: 48px;
   width: auto;
   object-fit: contain;
+  transition: opacity 0.3s ease;
 }
+.logo:hover img { opacity: 0.8; }
 
+/* ─── Nav Links ──────────────────────────────────────────────────────── */
 .navLinks {
   display: flex;
   gap: var(--spacing-8);
@@ -27,60 +37,113 @@
 }
 
 .link {
+  font-family: var(--font-heading);
   font-weight: 500;
-  font-size: 1rem;
-  color: var(--c-text);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--c-brown-dark);
   transition: color 0.3s ease;
-  cursor: pointer;
   position: relative;
-}
-
-.link:hover {
-  color: var(--c-brown);
+  padding-bottom: 3px;
 }
 
 .link::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
-  background-color: var(--c-green);
-  transition: width 0.3s ease;
+  width: 0;
+  height: 1px;
+  background: var(--c-gold);
+  transition: width 0.38s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+body.lang-ar .link::after { left: auto; right: 0; }
 
-.link:hover::after {
-  width: 100%;
+.link:hover { color: var(--c-brown); }
+.link:hover::after { width: 100%; }
+
+/* ─── Right: lang + hamburger ────────────────────────────────────────── */
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
 }
 
 .langSwitch {
   display: flex;
-  gap: var(--spacing-2);
   align-items: center;
+  gap: 6px;
 }
 
 .langBtn {
   background: none;
   border: none;
+  font-family: var(--font-heading);
   font-weight: 600;
   color: var(--c-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   cursor: pointer;
   transition: color 0.3s ease;
+  text-transform: uppercase;
+  padding: 0;
+}
+.langBtn.active,
+.langBtn:hover { color: var(--c-brown-dark); }
+
+.langSep {
+  display: block;
+  width: 1px;
+  height: 12px;
+  background: var(--c-border);
 }
 
-.langBtn.active, .langBtn:hover {
-  color: var(--c-brown);
+/* ─── Hamburger (mobile) ─────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
 }
-
-.langSeparator {
-  color: #ccc;
-  font-size: 0.8rem;
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--c-brown-dark);
+  transition: all 0.35s ease;
+  transform-origin: center;
 }
+.hamburgerOpen span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburgerOpen span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburgerOpen span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-@media (max-width: 768px) {
+/* ─── Mobile nav ─────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+
   .navLinks {
-    display: none; /* simple mobile hide for now */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-6);
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(251, 247, 242, 0.97);
+    backdrop-filter: blur(20px);
+    padding-top: 120px;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: -1;
+  }
+  .navLinks.open {
+    transform: translateX(0);
+  }
+  .link {
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
   }
 }

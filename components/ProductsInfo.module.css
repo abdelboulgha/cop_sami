@@ -1,139 +1,197 @@
 .productsSection {
-  background-color: var(--c-surface); /* Keep it light and ultra premium */
+  background: var(--c-surface);
+  padding: var(--spacing-40) 0;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid var(--c-border);
 }
 
+/* ── Header ──────────────────────────────────────────────────────────────── */
 .header {
-  text-align: center;
-  margin-bottom: var(--spacing-24);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 760px;
+  margin: 0 auto var(--spacing-24);
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.titleH {
+  color: var(--c-brown-dark);
+  margin-bottom: var(--spacing-4);
+}
+
+.titleEm {
+  font-style: italic;
+  color: var(--c-green);
 }
 
 .introDesc {
-  font-size: 1.25rem;
-  margin-top: var(--spacing-6);
+  font-size: 1.05rem;
   color: var(--c-text-muted);
+  margin-top: var(--spacing-4);
 }
 
-.productGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: var(--spacing-16);
-  padding: 0 var(--spacing-8);
-}
-
+/* ── Card ────────────────────────────────────────────────────────────────── */
 .card {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 560px;
+  margin-bottom: var(--spacing-8);
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  background: var(--c-bg);
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(70px);
+  transition: box-shadow 0.6s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
 }
 
+/* Reversed image/text order */
+.cardReverse {
+  direction: rtl;
+}
+.cardReverse > * {
+  direction: ltr;
+}
+body.lang-ar .cardReverse {
+  direction: ltr;
+}
+body.lang-ar .cardReverse > * {
+  direction: rtl;
+}
+
+/* ── Image frame ─────────────────────────────────────────────────────────── */
 .imgFrame {
   position: relative;
-  width: 100%;
-  aspect-ratio: 4/5;
   overflow: hidden;
-  margin-bottom: var(--spacing-8);
-  background-color: var(--c-bg); /* subtle backing */
 }
 
-/* Subtle image zoom on hover */
 .img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transform-origin: center;
+  transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-
 .card:hover .img {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
-/* Optional thin border overlay for extra premium touch */
-.imgFrame::after {
-  content: '';
+.imgOverlay {
   position: absolute;
-  inset: var(--spacing-4);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  inset: 0;
+  background: linear-gradient(to top right, rgba(60,39,16,0.35) 0%, transparent 55%);
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s;
 }
 
-.card:hover .imgFrame::after {
-  opacity: 1;
-}
-
-.cardContent {
-  padding-right: var(--spacing-8);
-}
-
-.cardCategory {
+.imgTag {
+  position: absolute;
+  top: var(--spacing-6);
+  left: var(--spacing-6);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  padding: 6px 16px;
   font-family: var(--font-heading);
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.8rem;
-  color: var(--c-green);
-  margin-bottom: var(--spacing-2);
-  display: block;
+  letter-spacing: 0.18em;
+  color: var(--c-brown-dark);
+  border: 1px solid rgba(201,168,76,0.3);
+}
+body.lang-ar .imgTag { left: auto; right: var(--spacing-6); }
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+.cardContent {
+  padding: var(--spacing-16) var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--c-bg);
 }
 
 .cardTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
   color: var(--c-brown-dark);
+  line-height: 1.05;
   margin-bottom: var(--spacing-4);
-  line-height: 1.1;
+}
+
+.cardDivider {
+  width: 40px;
+  height: 1px;
+  background: var(--c-gold);
+  margin-bottom: var(--spacing-6);
 }
 
 .cardDesc {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--c-text-muted);
-  line-height: 1.6;
-  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-6);
 }
 
-.exploreBtn {
-  margin-top: var(--spacing-6);
+/* Feature bullet list */
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+}
+.featureList li {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--c-brown);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+.featureList li::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--c-gold);
+  flex-shrink: 0;
+}
+body.lang-ar .featureList li { flex-direction: row-reverse; }
+
+.cardBtn {
   display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-heading);
   font-weight: 600;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.15em;
   color: var(--c-brown-dark);
-  font-size: 0.85rem;
-  align-items: center;
-  position: relative;
+  border-bottom: 1px solid var(--c-border);
   padding-bottom: 4px;
+  width: fit-content;
+  transition: color 0.3s ease, border-color 0.3s ease, gap 0.3s ease;
+}
+.cardBtn:hover {
+  color: var(--c-gold);
+  border-color: var(--c-gold);
+  gap: 16px;
 }
 
-.exploreBtn::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--c-brown-dark);
-  transition: width 0.4s ease;
+.arrow {
+  transition: transform 0.3s ease;
 }
+.cardBtn:hover .arrow { transform: translateX(4px); }
+body.lang-ar .arrow { transform: rotate(180deg); }
 
-.exploreBtn:hover::before {
-  width: 100%;
-}
-
+/* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .productGrid {
+  .card, .cardReverse {
     grid-template-columns: 1fr;
-    gap: var(--spacing-16);
-    padding: 0;
+    direction: ltr;
+    min-height: auto;
   }
+  body.lang-ar .cardReverse { direction: rtl; }
+  .imgFrame { min-height: 340px; }
+  .cardContent { padding: var(--spacing-8); }
 }
