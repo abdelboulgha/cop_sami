@@ -2,42 +2,18 @@
   background: var(--c-bg); /* Soft light apothecary background */
   position: relative;
   overflow: hidden;
-  padding: var(--spacing-24) 0 var(--spacing-40);
+  padding: var(--spacing-32) 0 var(--spacing-40);
 }
 
-/* ── Parallax Image ──────────────────────────────────────────────────────── */
-.parallaxContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--spacing-16);
-}
-
-.storyParallax {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: 60vh;
-  min-height: 400px;
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  clip-path: inset(0);
-}
-
-.parallaxImage {
-  object-fit: cover;
-  object-position: center 40%;
-  z-index: 1;
-}
-
-/* ── Quote ───────────────────────────────────────────────────────────── */
-.quoteBox {
+/* ── Intro Box ───────────────────────────────────────────────────────────── */
+.introBox {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: var(--spacing-24);
+  margin-bottom: var(--spacing-32);
 }
 
-.quote {
+.mainTitle {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.8rem);
   font-weight: 300;
@@ -45,6 +21,7 @@
   line-height: 1.25;
   white-space: pre-line;
   letter-spacing: -0.01em;
+  margin-top: var(--spacing-6);
 }
 
 /* ── Stats ───────────────────────────────────────────────────────────── */
@@ -87,13 +64,20 @@
   color: var(--c-text-muted);
 }
 
-/* ── Details Grid ────────────────────────────────────────────────────── */
-.detailsGrid {
+/* ── Content Grid ────────────────────────────────────────────────────── */
+.contentGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-24);
-  max-width: 1000px;
+  gap: var(--spacing-32);
+  max-width: 1200px;
   margin: 0 auto;
+  align-items: center;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-20);
 }
 
 .blockTitle {
@@ -103,6 +87,26 @@
   margin-bottom: var(--spacing-6);
   line-height: 1.1;
   font-weight: 300;
+}
+
+/* ── Image ──────────────────────────────────────────────────────────── */
+.imageCol {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.elegantImage {
+  object-fit: cover;
+  border-radius: var(--radius-sm);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
@@ -120,8 +124,19 @@
   .statItem:nth-last-child(-n+2) {
     border-bottom: none;
   }
-  .detailsGrid {
+  
+  .contentGrid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-16);
+    gap: var(--spacing-32);
+  }
+  
+  .imageCol {
+    justify-content: center;
+    order: -1;
+  }
+  
+  .imageWrapper {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
   }
 }
