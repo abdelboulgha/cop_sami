@@ -7,66 +7,76 @@ import gsap from 'gsap';
 import { useLang } from './LanguageProvider';
 
 export default function Hero() {
-  const comp    = useRef<HTMLDivElement>(null);
+  const comp      = useRef<HTMLDivElement>(null);
   const bottleRef = useRef<HTMLDivElement>(null);
+  const videoRef  = useRef<HTMLVideoElement>(null);
   const { t } = useLang();
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.1 });
+    // Make sure video plays (some browsers block autoplay)
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
 
-      // Eyebrow + divider
+    let ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.3 });
+
+      // Video slow zoom-in
+      gsap.fromTo(videoRef.current,
+        { scale: 1.08 },
+        { scale: 1, duration: 6, ease: 'power1.out' }
+      );
+
+      // Eyebrow
       tl.from(`.${styles.eyebrow}`, {
         opacity: 0,
-        y: 18,
+        y: 20,
         duration: 1,
         ease: 'power3.out',
       })
-      // Each word clip-reveal
+      // Word clip-reveal
       .from(`.${styles.animWord}`, {
-        yPercent: 110,
+        yPercent: 115,
         duration: 1.5,
-        stagger: 0.1,
+        stagger: 0.12,
         ease: 'power4.out',
-      }, '-=0.6')
+      }, '-=0.5')
       // Subtitle
       .from(`.${styles.subtitle}`, {
         opacity: 0,
         y: 24,
         duration: 1.2,
         ease: 'power3.out',
-      }, '-=0.9')
-      // CTA buttons
+      }, '-=0.8')
+      // CTA
       .from(`.${styles.actions}`, {
         opacity: 0,
         y: 20,
         duration: 1,
         ease: 'power3.out',
-      }, '-=0.8')
+      }, '-=0.7')
+      // Trust row
+      .from(`.${styles.trustRow}`, {
+        opacity: 0,
+        y: 16,
+        duration: 0.9,
+        ease: 'power3.out',
+      }, '-=0.6')
       // Scroll hint
       .from(`.${styles.scrollHint}`, {
         opacity: 0,
         duration: 1,
         ease: 'power2.out',
-      }, '-=0.4');
+      }, '-=0.3');
 
       // Bottle entrance
       gsap.from(bottleRef.current, {
-        scale: 0.82,
+        scale: 0.78,
         opacity: 0,
-        y: 30,
-        duration: 2.2,
-        ease: 'expo.out',
-        delay: 0.4,
-      });
-
-      // Background "ARGAN" text
-      gsap.from(`.${styles.bgWord}`, {
-        opacity: 0,
-        scale: 1.1,
+        y: 40,
         duration: 2.5,
         ease: 'expo.out',
-        delay: 0.2,
+        delay: 0.5,
       });
 
     }, comp);
@@ -77,8 +87,8 @@ export default function Hero() {
   // Mouse parallax on bottle
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!bottleRef.current) return;
-    const xPos = (e.clientX / window.innerWidth  - 0.5) * 22;
-    const yPos = (e.clientY / window.innerHeight - 0.5) * 22;
+    const xPos = (e.clientX / window.innerWidth  - 0.5) * 20;
+    const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
     gsap.to(bottleRef.current, {
       rotationY: xPos,
       rotationX: -yPos,
@@ -87,6 +97,7 @@ export default function Hero() {
       duration: 1.2,
     });
   };
+
   const handleMouseLeave = () => {
     gsap.to(bottleRef.current, {
       rotationY: 0,
@@ -103,21 +114,37 @@ export default function Hero() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Background decorative big text */}
-      <span className={styles.bgWord} aria-hidden>ARGAN</span>
+      {/* ── Full-screen background video ────────────────── */}
+      <div className={styles.videoBg}>
+        <video
+          ref={videoRef}
+          className={styles.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/assets/hero_poster.jpg"
+        >
+          <source src="/assets/hero_video.mp4"  type="video/mp4" />
+          <source src="/assets/hero_video.webm" type="video/webm" />
+        </video>
 
-      {/* Decorative lines */}
-      <div className={styles.lineLeft}  aria-hidden />
-      <div className={styles.lineRight} aria-hidden />
+        {/* Multi-layer overlay for warmth + readability */}
+        <div className={styles.overlayGradient} />
+        <div className={styles.overlayColor}    />
+        <div className={styles.overlayVignette} />
+      </div>
 
+      {/* ── Content ─────────────────────────────────────── */}
       <div className={`container ${styles.heroGrid}`}>
 
-        {/* ── Left: Typography ───────────────────────────────── */}
+        {/* Left: Typography */}
         <div className={styles.textColumn}>
 
           <div className={styles.eyebrow}>
             <span className={styles.eyebrowDot} />
-            <span className="subheading" style={{marginBottom: 0}}>
+            <span className={styles.eyebrowText}>
               {t('Argan Product by Sami', 'أركان برودكت باي سامي')}
             </span>
           </div>
@@ -142,10 +169,10 @@ export default function Hero() {
           </p>
 
           <div className={styles.actions}>
-            <a href="#products" className="btn btn-primary">
-              <span>{t('Découvrir la gamme', 'اكتشف المجموعة')}</span>
+            <a href="#products" className={styles.btnPrimary}>
+              {t('Découvrir la gamme', 'اكتشف المجموعة')}
             </a>
-            <a href="#process" className="btn btn-outline">
+            <a href="#process" className={styles.btnGhost}>
               {t('Notre savoir-faire', 'خبرتنا')}
             </a>
           </div>
@@ -169,9 +196,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── Right: Bottle ──────────────────────────────────── */}
+        {/* Right: Floating bottle */}
         <div className={styles.visualColumn}>
-          {/* Glow halo behind bottle */}
           <div className={styles.bottleHalo} />
 
           <div className={styles.bottleContainer} ref={bottleRef}>
@@ -184,7 +210,7 @@ export default function Hero() {
             />
           </div>
 
-          {/* Floating label card */}
+          {/* Floating glass card */}
           <div className={styles.floatCard}>
             <span className={styles.floatCardIcon}>✦</span>
             <span className={styles.floatCardText}>
