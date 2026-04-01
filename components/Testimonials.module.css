@@ -3,7 +3,6 @@
   padding: var(--spacing-40) 0;
   position: relative;
   overflow: hidden;
-  opacity: 0;
 }
 
 /* Soft background accent shape */

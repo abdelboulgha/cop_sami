@@ -52,10 +52,10 @@ export default function Testimonials() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.fromTo(`.${styles.section}`,
-        { opacity: 0 },
+      gsap.fromTo(`.${styles.labelRow}`,
+        { opacity: 0, y: 20 },
         {
-          opacity: 1, duration: 1.5, ease: 'power2.out',
+          opacity: 1, y: 0, duration: 1, ease: 'power3.out',
           scrollTrigger: { trigger: comp.current, start: 'top 80%' },
         }
       );
@@ -63,7 +63,7 @@ export default function Testimonials() {
         { y: 50, opacity: 0 },
         {
           y: 0, opacity: 1, duration: 1.4, ease: 'power3.out',
-          scrollTrigger: { trigger: `.${styles.quoteWrapper}`, start: 'top 82%' },
+          scrollTrigger: { trigger: comp.current, start: 'top 75%' },
         }
       );
     }, comp);
