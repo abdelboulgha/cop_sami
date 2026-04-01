@@ -1,5 +1,6 @@
 import PageHero from '../../components/PageHero';
 import ProductsInfo from '../../components/ProductsInfo';
+import ProductGrid from '../../components/ProductGrid';
 import Benefits from '../../components/Benefits';
 import Cta from '../../components/Cta';
 
@@ -20,6 +21,7 @@ export default function ProduitsPage() {
         subtitleAr="زيت غذائي وتجميلي طبيعي 100%، مستخرج يدويًا من قبل حرفياتنا في سوس ماسة."
       />
       <ProductsInfo />
+      <ProductGrid />
       <Benefits />
       <Cta />
     </>
