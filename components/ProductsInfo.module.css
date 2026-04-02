@@ -32,39 +32,37 @@
 /* ── Card ────────────────────────────────────────────────────────────────── */
 .card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  min-height: 560px;
-  margin-bottom: var(--spacing-8);
-  border: 1px solid var(--c-border);
-  overflow: hidden;
-  background: var(--c-bg);
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--spacing-16);
+  align-items: center;
+  margin-bottom: var(--spacing-32);
   opacity: 0;
   transform: translateY(70px);
-  transition: box-shadow 0.6s ease;
-}
-.card:hover {
-  box-shadow: var(--shadow-lg);
 }
 
 /* Reversed image/text order */
 .cardReverse {
-  direction: rtl;
+  grid-template-columns: 1.1fr 1fr;
 }
-.cardReverse > * {
-  direction: ltr;
+.cardReverse .imgFrame {
+  order: 2;
 }
-body.lang-ar .cardReverse {
-  direction: ltr;
+.cardReverse .cardContent {
+  order: 1;
 }
-body.lang-ar .cardReverse > * {
-  direction: rtl;
-}
+
+body.lang-ar .cardReverse .imgFrame { order: 1; }
+body.lang-ar .cardReverse .cardContent { order: 2; }
+
 
 /* ── Image frame ─────────────────────────────────────────────────────────── */
 .imgFrame {
   position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
   overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .img {
@@ -72,13 +70,13 @@ body.lang-ar .cardReverse > * {
   transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .card:hover .img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .imgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top right, rgba(60,39,16,0.35) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(20, 12, 5, 0.4) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -86,71 +84,75 @@ body.lang-ar .cardReverse > * {
   position: absolute;
   top: var(--spacing-6);
   left: var(--spacing-6);
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
-  padding: 6px 16px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+  padding: 8px 20px;
   font-family: var(--font-heading);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   color: var(--c-brown-dark);
-  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 30px;
 }
 body.lang-ar .imgTag { left: auto; right: var(--spacing-6); }
 
 /* ── Content ─────────────────────────────────────────────────────────────── */
 .cardContent {
-  padding: var(--spacing-16) var(--spacing-12);
+  padding: var(--spacing-8) 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--c-bg);
+  max-width: 520px;
+}
+
+.cardReverse .cardContent {
+  margin-left: auto;
 }
 
 .cardTitle {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
-  font-weight: 400;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 300;
   color: var(--c-brown-dark);
   line-height: 1.05;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
 }
 
 .cardDivider {
-  width: 40px;
+  width: 60px;
   height: 1px;
   background: var(--c-gold);
-  margin-bottom: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
 }
 
 .cardDesc {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--c-text-muted);
-  line-height: 1.8;
-  margin-bottom: var(--spacing-6);
+  line-height: 1.85;
+  margin-bottom: var(--spacing-8);
 }
 
 /* Feature bullet list */
 .featureList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
-  margin-bottom: var(--spacing-8);
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-12);
 }
 .featureList li {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--c-brown);
+  letter-spacing: 0.15em;
+  color: var(--c-brown-dark);
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-4);
 }
 .featureList li::before {
   content: '';
   display: inline-block;
-  width: 18px;
+  width: 24px;
   height: 1px;
   background: var(--c-gold);
   flex-shrink: 0;
@@ -160,21 +162,24 @@ body.lang-ar .featureList li { flex-direction: row-reverse; }
 .cardBtn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--c-brown-dark);
-  border-bottom: 1px solid var(--c-border);
-  padding-bottom: 4px;
+  letter-spacing: 0.2em;
+  color: #fff;
+  background: var(--c-brown-dark);
+  padding: 16px 32px;
+  border-radius: var(--radius-sm);
   width: fit-content;
-  transition: color 0.3s ease, border-color 0.3s ease, gap 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, gap 0.3s ease;
 }
 .cardBtn:hover {
-  color: var(--c-gold);
-  border-color: var(--c-gold);
+  background: var(--c-gold);
+  color: var(--c-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.3);
   gap: 16px;
 }
 
@@ -188,10 +193,12 @@ body.lang-ar .arrow { transform: rotate(180deg); }
 @media (max-width: 900px) {
   .card, .cardReverse {
     grid-template-columns: 1fr;
-    direction: ltr;
-    min-height: auto;
+    gap: var(--spacing-8);
+    margin-bottom: var(--spacing-16);
   }
-  body.lang-ar .cardReverse { direction: rtl; }
-  .imgFrame { min-height: 340px; }
-  .cardContent { padding: var(--spacing-8); }
+  .cardReverse .imgFrame, .cardReverse .cardContent {
+    order: unset;
+  }
+  .imgFrame { aspect-ratio: 1; border-radius: var(--radius-sm); }
+  .cardContent { padding: var(--spacing-4) 0; }
 }
