@@ -64,20 +64,46 @@
   color: var(--c-text-muted);
 }
 
-/* ── Content Grid ────────────────────────────────────────────────────── */
-.contentGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* ── Content Rows ────────────────────────────────────────────────────── */
+.contentRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: var(--spacing-32);
   max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
+  margin: 0 auto var(--spacing-32);
+}
+.contentRow:last-child {
+  margin-bottom: 0;
 }
 
-.textContent {
+.rowNormal {
+  flex-direction: row;
+}
+
+.rowReversed {
+  flex-direction: row-reverse;
+}
+
+/* RTL Support for the alternating layout */
+:global([dir="rtl"]) .rowNormal {
+  flex-direction: row-reverse;
+}
+
+:global([dir="rtl"]) .rowReversed {
+  flex-direction: row;
+}
+
+.textCol {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-20);
+  gap: var(--spacing-8);
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
 }
 
 .blockTitle {
@@ -91,8 +117,9 @@
 
 /* ── Image ──────────────────────────────────────────────────────────── */
 .imageCol {
+  flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .imageWrapper {
@@ -102,6 +129,7 @@
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-sm);
   overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Premium shadow */
 }
 
 .elegantImage {
@@ -125,14 +153,19 @@
     border-bottom: none;
   }
   
-  .contentGrid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-32);
+  .contentRow, .rowNormal, .rowReversed {
+    flex-direction: column !important; /* Stack vertically on small screens */
+    gap: var(--spacing-24);
+  }
+
+  :global([dir="rtl"]) .rowNormal,
+  :global([dir="rtl"]) .rowReversed {
+    flex-direction: column !important;
   }
   
   .imageCol {
     justify-content: center;
-    order: -1;
+    order: -1; /* Image always on top on mobile */
   }
   
   .imageWrapper {
