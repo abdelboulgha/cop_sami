@@ -1,6 +1,7 @@
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Benefits from '../components/Benefits';
+import Collection from '../components/Collection';
 import Testimonials from '../components/Testimonials';
 import Cta from '../components/Cta';
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <Benefits />
+      <Collection />
       <Testimonials />
       <Cta />
     </>
