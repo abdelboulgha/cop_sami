@@ -158,9 +158,18 @@
   }
 }
 @media (max-width: 768px) {
+  .horizontalScrollWrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for cleaner look */
+  }
+  .horizontalScrollWrapper::-webkit-scrollbar {
+    display: none;
+  }
   .scrollContainer {
     height: 55vh;
-    padding: 0 5% var(--spacing-16);
+    padding: 0 5% var(--spacing-6); /* Reduced bottom padding */
   }
   .card {
     width: 280px;
