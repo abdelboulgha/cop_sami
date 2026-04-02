@@ -142,7 +142,7 @@ export default function Collection() {
               </div>
               <div className={styles.cardOverlay}></div>
               
-              <div className={styles.badge} style={{ backgroundColor: item.tagFr === 'MIELS' || item.tagFr === 'PÂTES' ? 'rgba(205, 167, 92, 0.8)' : undefined }}>
+              <div className={styles.badge}>
                 {lang === 'ar' ? item.tagAr : item.tagFr}
               </div>
               
