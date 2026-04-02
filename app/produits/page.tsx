@@ -1,4 +1,4 @@
-import PageHero from '../../components/PageHero';
+import HeroCinematic from '../../components/HeroCinematic';
 import ProductsInfo from '../../components/ProductsInfo';
 import ProductGrid from '../../components/ProductGrid';
 import Cta from '../../components/Cta';
@@ -11,13 +11,15 @@ export const metadata = {
 export default function ProduitsPage() {
   return (
     <>
-      <PageHero
+      <HeroCinematic
         eyebrow="Nos Produits"
         eyebrowAr="منتجاتنا"
-        title="L'Or Vert du Maroc"
-        titleAr="الذهب الأخضر للمغرب"
-        subtitle="Huile alimentaire et cosmétique 100% naturelle, extraite artisanalement par nos coopératrices du Souss-Massa."
-        subtitleAr="زيت غذائي وتجميلي طبيعي 100%، مستخرج يدويًا من قبل حرفياتنا في سوس ماسة."
+        title={
+          <>
+            L&apos;Or Vert<br />du Maroc
+          </>
+        }
+        imageSrc="/assets/premium_cosmetic.png" // You can change this to any hero image
       />
       <ProductsInfo />
       <ProductGrid />
