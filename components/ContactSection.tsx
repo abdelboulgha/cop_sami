@@ -68,15 +68,8 @@ export default function ContactSection() {
               <div className={styles.contactItem}>
                 <div className={styles.iconBox}><PhoneIcon /></div>
                 <div className={styles.contactText}>
-                  <span className={styles.contactLabel}>{t('Téléphone', 'الهاتف')}</span>
-                  <a href="tel:+212600000000">+212 600 000 000</a>
-                </div>
-              </div>
-              <div className={styles.contactItem}>
-                <div className={styles.iconBox}><MailIcon /></div>
-                <div className={styles.contactText}>
-                  <span className={styles.contactLabel}>{t('Email', 'البريد')}</span>
-                  <a href="mailto:contact@argan-sami.ma">contact@argan-sami.ma</a>
+                  <span className={styles.contactLabel}>{t('WhatsApp', 'واتساب')}</span>
+                  <a href="https://wa.me/212605925032">+212 605 925 032</a>
                 </div>
               </div>
               <div className={styles.contactItem}>
@@ -96,65 +89,27 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* ── Right: Form ────────────────────────────────── */}
-          <div className={styles.formWrapper}>
-            {sent ? (
-              <div className={styles.successMsg}>
-                <span className={styles.successIcon}>✦</span>
-                <h3>{t('Message envoyé !', 'تم إرسال الرسالة!')}</h3>
-                <p>{t("Merci pour votre message. Nous vous répondrons sous 24h.", "شكرًا لرسالتكم. سنرد عليكم خلال 24 ساعة.")}</p>
-                <button className={styles.resetBtn} onClick={() => setSent(false)}>
-                  {t('Envoyer un autre message', 'إرسال رسالة أخرى')}
-                </button>
-              </div>
-            ) : (
-              <form ref={formRef} onSubmit={handleSubmit} className={styles.form} noValidate>
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    <label className={styles.label}>{t('Prénom', 'الاسم الأول')}</label>
-                    <input className={styles.input} type="text" required placeholder={t('Votre prénom', 'اسمك الأول')} />
-                  </div>
-                  <div className={styles.field}>
-                    <label className={styles.label}>{t('Nom', 'اللقب')}</label>
-                    <input className={styles.input} type="text" required placeholder={t('Votre nom', 'لقبك')} />
-                  </div>
-                </div>
-
-                <div className={styles.field}>
-                  <label className={styles.label}>{t('Email', 'البريد الإلكتروني')}</label>
-                  <input className={styles.input} type="email" required placeholder={t('votre@email.com', 'بريدك@الإلكتروني.com')} />
-                </div>
-
-                <div className={styles.field}>
-                  <label className={styles.label}>{t('Sujet', 'الموضوع')}</label>
-                  <select className={styles.input}>
-                    <option value="">{t('Choisir un sujet…', 'اختر موضوعًا…')}</option>
-                    <option value="produit">{t('Renseignement produit', 'استفسار عن منتج')}</option>
-                    <option value="commande">{t('Commande & livraison', 'طلب وتوصيل')}</option>
-                    <option value="partenariat">{t('Partenariat', 'شراكة')}</option>
-                    <option value="autre">{t('Autre', 'أخرى')}</option>
-                  </select>
-                </div>
-
-                <div className={styles.field}>
-                  <label className={styles.label}>{t('Message', 'الرسالة')}</label>
-                  <textarea
-                    className={`${styles.input} ${styles.textarea}`}
-                    required
-                    rows={5}
-                    placeholder={t('Votre message…', 'رسالتك…')}
-                  />
-                </div>
-
-                <button type="submit" className={styles.submitBtn} disabled={loading}>
-                  {loading
-                    ? t('Envoi en cours…', 'جارٍ الإرسال…')
-                    : t('Envoyer le message', 'إرسال الرسالة')
-                  }
-                  {!loading && <span className={styles.submitArrow}>→</span>}
-                </button>
-              </form>
-            )}
+          {/* ── Right: WhatsApp Action ────────────────────────────────── */}
+          <div className={styles.formWrapper} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '4rem 2rem' }}>
+            <svg viewBox="0 0 32 32" fill="none" width="64" height="64" style={{ marginBottom: '1rem' }}>
+              <path d="M16 2.5C8.544 2.5 2.5 8.544 2.5 16C2.5 18.375 3.12 20.655 4.254 22.656L2.8 28L8.253 26.574C10.207 27.608 12.443 28.163 16 28.163C23.456 28.163 29.5 22.119 29.5 14.663C29.5 7.207 23.456 1.163 16 1.163V2.5" fill="transparent"/>
+              <path d="M25.5 14.5C25.5 8.701 20.799 4 15 4C9.201 4 4.5 8.701 4.5 14.5C4.5 16.822 5.253 18.98 6.551 20.708L5.4 24.6L9.369 23.453C11.026 24.582 12.96 25 15 25C20.799 25 25.5 20.299 25.5 14.5ZM19.782 18.066C19.52 18.803 18.5 19.398 17.75 19.547C17.224 19.652 16.478 19.767 13.923 18.708C10.781 17.405 8.759 14.218 8.6 14.012C8.441 13.805 7.288 12.27 7.288 10.681C7.288 9.092 8.098 8.319 8.431 7.976C8.698 7.701 9.12 7.566 9.52 7.566C9.644 7.566 9.761 7.572 9.863 7.577C10.171 7.591 10.325 7.612 10.531 8.111C10.788 8.732 11.417 10.269 11.493 10.428C11.572 10.587 11.652 10.806 11.547 11.014C11.444 11.214 11.366 11.303 11.212 11.482C11.058 11.661 10.891 11.861 10.75 12C10.596 12.172 10.428 12.358 10.608 12.668C10.788 12.978 11.408 13.992 12.314 14.8B13.485 15.845 14.42 16.162 14.753 16.3B15.036 16.417 15.37 16.39 15.568 16.176C15.822 15.9 16.132 15.432 16.448 14.971C16.678 14.633 16.976 14.591 17.259 14.694C17.542 14.798 19.041 15.536 19.342 15.688C19.642 15.84 19.843 15.917 19.92 16.048C20 16.179 20 16.765 19.782 18.066V18.066Z" fill="#25D366"/>
+            </svg>
+            <h3 className={styles.infoTitle} style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>
+              {t("Discutez avec nous", "تحدث معنا")}
+            </h3>
+            <p className={styles.infoDesc} style={{ margin: '0 auto 2rem', maxWidth: '350px' }}>
+              {t("Pour un service client plus rapide et direct, nous avons privilégié le contact exclusif via WhatsApp.", "لخدمة عملاء أسرع، نفضل التواصل المباشر والحصري عبر واتساب.")}
+            </p>
+            <a 
+              href="https://wa.me/212605925032" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.submitBtn} 
+              style={{ background: '#25D366', color: '#fff', border: 'none', alignSelf: 'center' }}
+            >
+              {t("Ouvrir WhatsApp", "افتح واتساب")} <span className={styles.submitArrow}>→</span>
+            </a>
           </div>
 
         </div>
