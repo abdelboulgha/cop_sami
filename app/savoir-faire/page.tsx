@@ -1,6 +1,5 @@
 import PageHero from '../../components/PageHero';
 import About from '../../components/About';
-import Process from '../../components/Process';
 import Cta from '../../components/Cta';
 
 export const metadata = {
@@ -20,7 +19,6 @@ export default function SavoirFairePage() {
         subtitleAr="إرث عريق تنقله نساء سوس ماسة في قلب المغرب."
       />
       <About />
-      <Process />
       <Cta />
     </>
   );
