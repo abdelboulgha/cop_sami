@@ -26,34 +26,49 @@
 }
 
 .item {
-  padding: var(--spacing-10) var(--spacing-6);
+  padding: var(--spacing-16) var(--spacing-8);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   background: transparent;
-  border-top: 1px solid var(--c-border);
-  transition: transform 0.4s ease, border-color 0.4s ease;
+  border-radius: 16px;
+  border: 1px solid transparent; 
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .item:hover {
-  border-color: var(--c-gold);
-  transform: translateY(-4px);
+  background: #ffffff;
+  border-color: rgba(212, 175, 55, 0.2); /* Soft gold border */
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
 }
 
 /* ── Icon ────────────────────────────────────────────────────────────────── */
 .iconBox {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--spacing-8);
-  color: var(--c-brown);
+  margin-bottom: var(--spacing-10);
+  color: var(--c-gold); /* Gold color for icon initially */
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle gold circle */
+  border-radius: 50%;
+  transition: all 0.5s ease;
 }
+
+.item:hover .iconBox {
+  background: var(--c-gold);
+  color: #ffffff;
+  transform: scale(1.05); /* Slight pop */
+  border-color: var(--c-gold);
+}
+
 .iconBox svg {
-  width: 48px;
-  height: 48px;
-  stroke-width: 0.8px; /* Very thin stroke for luxury feel */
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.2px; /* A bit thicker since stroke is white on hover */
 }
 
 /* ── Text ────────────────────────────────────────────────────────────────── */
@@ -78,7 +93,9 @@
   .grid { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-12) var(--spacing-8); }
 }
 @media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; gap: var(--spacing-16); }
-  .item { border-top: none; border-bottom: 1px solid var(--c-border); padding-bottom: var(--spacing-16); }
-  .item:last-child { border-bottom: none; }
+  .grid { grid-template-columns: 1fr; gap: var(--spacing-8); }
+  .item {
+    border: 1px solid rgba(212, 175, 55, 0.1); /* Slight border on mobile so cards are legible */
+    background: #ffffff; /* Show cards by default on mobile */
+  }
 }
