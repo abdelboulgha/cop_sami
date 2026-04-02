@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Collection.module.css';
 import gsap from 'gsap';
@@ -77,7 +77,7 @@ export default function Collection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { lang, t } = useLang();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       
       const mm = gsap.matchMedia();

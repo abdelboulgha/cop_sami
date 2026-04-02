@@ -114,7 +114,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <main className={styles.aboutPage} ref={comp}>
+    <div className={styles.aboutPage} ref={comp}>
       
       {/* ── 1. Cinematic Hero ── */}
       <section className={styles.heroHeader}>
@@ -239,6 +239,6 @@ export default function AboutPage() {
         </div>
       </section>
       
-    </main>
+    </div>
   );
 }
