@@ -1,7 +1,6 @@
 import PageHero from '../../components/PageHero';
 import ProductsInfo from '../../components/ProductsInfo';
 import ProductGrid from '../../components/ProductGrid';
-import Benefits from '../../components/Benefits';
 import Cta from '../../components/Cta';
 
 export const metadata = {
@@ -22,7 +21,6 @@ export default function ProduitsPage() {
       />
       <ProductsInfo />
       <ProductGrid />
-      <Benefits />
       <Cta />
     </>
   );
