@@ -10,13 +10,13 @@ import { useLang } from './LanguageProvider';
 gsap.registerPlugin(ScrollTrigger);
 
 const galleryImages = [
-  '/assets/hero_argan_oil.png', // Huge picture: span 2/span 2
-  '/assets/honey_jar.png',      // 1x1
-  '/assets/artisanal_soap.png', // 1x2 Vertical
-  '/assets/medicinal_plants.png', // 1x1
-  '/assets/cosmetics_products.png', // 1x1
-  '/assets/women_cooperative.png', // 2x1 Wide
-  '/assets/about_argan_tree.png', // 1x1
+  '/assets/hero_argan_oil.png', 
+  '/assets/honey_jar.png',      
+  '/assets/artisanal_soap.png', 
+  '/assets/medicinal_plants.png', 
+  '/assets/cosmetics_products.png', 
+  '/assets/premium_amlou.png', 
+  '/assets/premium_cosmetic.png', 
 ];
 
 export default function Gallery() {
