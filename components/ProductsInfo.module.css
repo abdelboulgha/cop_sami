@@ -198,12 +198,18 @@ body.lang-ar .arrow { transform: rotate(180deg); }
 @media (max-width: 900px) {
   .card, .cardReverse {
     grid-template-columns: 1fr;
-    gap: var(--spacing-8);
-    margin-bottom: var(--spacing-16);
+    gap: var(--spacing-12);
+    margin-bottom: var(--spacing-24);
   }
-  .cardReverse .imgFrame, .cardReverse .cardContent {
-    order: unset;
+  .cardReverse .imgFrame { order: 1; }
+  .cardReverse .cardContent { order: 2; margin-left: 0; }
+  
+  body.lang-ar .cardReverse .imgFrame { order: 1; }
+  body.lang-ar .cardReverse .cardContent { order: 2; }
+  
+  .imgFrame { 
+    max-width: 400px;
+    border-radius: 400px 400px 16px 16px; 
   }
-  .imgFrame { aspect-ratio: 1; border-radius: var(--radius-sm); }
   .cardContent { padding: var(--spacing-4) 0; }
 }
