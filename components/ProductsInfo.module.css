@@ -60,41 +60,46 @@ body.lang-ar .cardReverse .cardContent { order: 2; }
   position: relative;
   width: 100%;
   aspect-ratio: 3/4;
+  max-width: 480px;
+  margin: 0 auto;
   overflow: hidden;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  border-radius: 999px 999px 16px 16px;
+  box-shadow: 0 24px 48px rgba(20, 12, 5, 0.08);
 }
 
 .img {
   object-fit: cover;
-  transition: transform 1.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .card:hover .img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .imgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(20, 12, 5, 0.4) 0%, transparent 40%);
+  background: linear-gradient(to top, rgba(20, 12, 5, 0.5) 0%, transparent 50%);
   pointer-events: none;
 }
 
 .imgTag {
   position: absolute;
-  top: var(--spacing-6);
-  left: var(--spacing-6);
+  bottom: var(--spacing-8);
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%);
   background: rgba(255,255,255,0.9);
   backdrop-filter: blur(8px);
-  padding: 8px 20px;
+  padding: 8px 24px;
   font-family: var(--font-heading);
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--c-brown-dark);
   border-radius: 30px;
+  white-space: nowrap;
 }
-body.lang-ar .imgTag { left: auto; right: var(--spacing-6); }
+body.lang-ar .imgTag { left: 50%; right: auto; transform: translateX(-50%); }
 
 /* ── Content ─────────────────────────────────────────────────────────────── */
 .cardContent {
