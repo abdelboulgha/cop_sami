@@ -87,9 +87,9 @@ export default function Footer() {
           <div className={styles.col}>
             <h4 className={styles.colTitle}>{t('Contactez-Nous', 'اتصل بنا')}</h4>
             <div className={styles.contactList}>
-              <a href="tel:+212600000000" className={styles.contactItem}>
+              <a href="tel:+212605925032" className={styles.contactItem}>
                 <span className={styles.contactIcon}>✆</span>
-                +212 600 000 000
+                +212 605 925 032
               </a>
               <a href="mailto:contact@argan-sami.ma" className={styles.contactItem}>
                 <span className={styles.contactIcon}>✉</span>
