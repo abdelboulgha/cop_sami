@@ -100,8 +100,6 @@ export default function Process() {
 
   return (
     <section id="process" className={styles.processSection} ref={comp}>
-      {/* Light background texture stripe */}
-      <div className={styles.bgStripe} />
 
       <div className="container">
         <div className={styles.header}>

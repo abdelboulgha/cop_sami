@@ -267,7 +267,6 @@ export default function ProductGrid() {
             {lang === 'ar' ? featured.descAr : featured.descFr}
           </p>
           <div className={styles.featuredFooter}>
-            <span className={styles.featuredPrice}>{featured.price}</span>
             <a href="#" className={styles.featuredBtn}>
               {t("Découvrir", "اكتشف")}
             </a>
@@ -324,7 +323,6 @@ export default function ProductGrid() {
                   {lang === 'ar' ? p.descAr : p.descFr}
                 </p>
                 <div className={styles.productFooter}>
-                  <span className={styles.productPrice}>{p.price}</span>
                   <a href="#" className={styles.addButton}>
                     {t('Commander', 'اطلب الآن')}
                   </a>

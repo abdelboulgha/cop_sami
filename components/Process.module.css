@@ -1,18 +1,8 @@
 .processSection {
-  background: var(--c-bg);
+  background: var(--c-bg-warm);
   position: relative;
   overflow: hidden;
-  padding: var(--spacing-40) 0;
-}
-
-.bgStripe {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 35%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--c-bg-warm) 0%, transparent 70%);
-  pointer-events: none;
+  padding: var(--spacing-48) 0; /* Let's give it more padding for better breathing room */
 }
 
 /* ── Header ──────────────────────────────────────────────────────────────── */
