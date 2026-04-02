@@ -8,11 +8,10 @@ import { usePathname } from 'next/navigation';
 import { useLang } from './LanguageProvider';
 
 const navItems = [
-  { href: '/',             labelFr: 'Accueil',      labelAr: 'الرئيسية' },
-  { href: '/about',        labelFr: 'À Propos',     labelAr: 'عن التعاونية' },
-  { href: '/produits',     labelFr: 'Produits',     labelAr: 'المنتجات' },
-  { href: '/savoir-faire', labelFr: 'Savoir-Faire', labelAr: 'خبرتنا'   },
-  { href: '/contact',      labelFr: 'Contact',      labelAr: 'اتصل بنا' },
+  { href: '/',         labelFr: 'Accueil',  labelAr: 'الرئيسية' },
+  { href: '/about',    labelFr: 'À Propos', labelAr: 'عن التعاونية' },
+  { href: '/produits', labelFr: 'Produits', labelAr: 'المنتجات' },
+  { href: '/contact',  labelFr: 'Contact',  labelAr: 'اتصل بنا' },
 ];
 
 export default function Navbar() {
