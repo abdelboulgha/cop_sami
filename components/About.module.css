@@ -125,16 +125,16 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 380px; /* Decreased from 500px */
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius-sm);
+  /* Beautiful Arch Shape */
+  border-radius: 999px 999px 12px 12px;
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Premium shadow */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Premium elegant shadow */
 }
 
 .elegantImage {
   object-fit: cover;
-  border-radius: var(--radius-sm);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
