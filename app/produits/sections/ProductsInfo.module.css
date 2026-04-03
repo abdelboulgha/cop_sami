@@ -7,7 +7,7 @@
 
 /* ── Inner wrapper ───────────────────────────────────────────────────────── */
 .inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--spacing-8);
 }
@@ -40,17 +40,17 @@
 /* ── Card ────────────────────────────────────────────────────────────────── */
 .card {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--spacing-16);
   align-items: center;
-  margin-bottom: var(--spacing-32);
+  margin-bottom: var(--spacing-24);
   opacity: 0;
   transform: translateY(70px);
 }
 
 /* Reversed image/text order */
 .cardReverse {
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
 }
 .cardReverse .imgFrame {
   order: 2;
@@ -67,12 +67,12 @@ body.lang-ar .cardReverse .cardContent { order: 2; }
 .imgFrame {
   position: relative;
   width: 100%;
-  aspect-ratio: 3/4;
-  max-width: 320px;
+  aspect-ratio: 4/3;
+  max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 999px 999px 12px 12px;
-  box-shadow: 0 20px 40px rgba(20, 12, 5, 0.1);
+  box-shadow: 0 20px 40px rgba(20, 12, 5, 0.12);
 }
 
 .img {
@@ -111,15 +111,14 @@ body.lang-ar .imgTag { left: 50%; right: auto; transform: translateX(-50%); }
 
 /* ── Content ─────────────────────────────────────────────────────────────── */
 .cardContent {
-  padding: var(--spacing-8) 0;
+  padding: var(--spacing-8) var(--spacing-8);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 520px;
 }
 
 .cardReverse .cardContent {
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .cardTitle {
