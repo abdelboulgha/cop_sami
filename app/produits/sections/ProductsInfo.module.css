@@ -32,7 +32,7 @@
 /* ── Card ────────────────────────────────────────────────────────────────── */
 .card {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: var(--spacing-16);
   align-items: center;
   margin-bottom: var(--spacing-32);
@@ -42,7 +42,7 @@
 
 /* Reversed image/text order */
 .cardReverse {
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 0.8fr 1.2fr;
 }
 .cardReverse .imgFrame {
   order: 2;
@@ -60,11 +60,11 @@ body.lang-ar .cardReverse .cardContent { order: 2; }
   position: relative;
   width: 100%;
   aspect-ratio: 3/4;
-  max-width: 480px;
+  max-width: 320px;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 999px 999px 16px 16px;
-  box-shadow: 0 24px 48px rgba(20, 12, 5, 0.08);
+  border-radius: 999px 999px 12px 12px;
+  box-shadow: 0 20px 40px rgba(20, 12, 5, 0.1);
 }
 
 .img {
