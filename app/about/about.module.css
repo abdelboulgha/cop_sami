@@ -273,7 +273,7 @@
 .imageContent {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 3/2;
   border-radius: var(--radius-md);
   overflow: hidden;
 }
@@ -688,7 +688,7 @@
   }
   .splitBlockReverse .textContent { order: 1; }
   .splitBlockReverse .imageContent { order: 2; }
-  .imageContent { aspect-ratio: 4/3; }
+  .imageContent { aspect-ratio: 16/9; }
 
   .valuesGrid {
     grid-template-columns: 1fr;
