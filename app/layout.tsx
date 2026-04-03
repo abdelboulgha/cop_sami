@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import LayoutWrapper from "../components/LayoutWrapper";
-import WhatsAppButton from "../components/WhatsAppButton";
+import "@/styles/globals.css";
+import LayoutWrapper from "@/components/shared/LayoutWrapper";
+import WhatsAppButton from "@/components/shared/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Argan Product by Sami | Coopérative Artisanale",

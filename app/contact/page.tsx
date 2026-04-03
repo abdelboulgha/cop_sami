@@ -1,5 +1,5 @@
-import PageHero from '../../components/PageHero';
-import ContactSection from '../../components/ContactSection';
+import PageHero from "@/app/contact/sections/PageHero";
+import ContactSection from "@/app/contact/sections/ContactSection";
 
 export const metadata = {
   title: 'Contact | Argan Product by Sami',

@@ -1,0 +1,220 @@
+﻿.pageHero {
+  position: relative;
+  padding: 180px 0 100px;
+  background: linear-gradient(155deg, var(--c-bg) 0%, var(--c-bg-warm) 60%, #E8DDD0 100%);
+  overflow: hidden;
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* Vertical decorative lines */
+.bgLines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8%;
+}
+.bgLines span {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    var(--c-gold) 25%,
+    var(--c-gold) 75%,
+    transparent 100%
+  );
+  opacity: 0.12;
+}
+
+/* Ambient glow */
+.bgGlow {
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 55vw;
+  height: 55vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Inner content ───────────────────────────────────────────────────────── */
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 900px;
+}
+body.lang-ar .inner { align-items: flex-end; }
+
+.inner.hasImage {
+  max-width: var(--container-max);
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+.textContent {
+  flex: 1;
+  max-width: 800px;
+}
+
+body.lang-ar .inner.hasImage {
+  flex-direction: row-reverse;
+}
+
+.heroImageWrap {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--c-border-gold);
+}
+
+.heroImageWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.1);
+  pointer-events: none;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05); /* Slight scale for elegance */
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--spacing-6);
+}
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-gold);
+  flex-shrink: 0;
+}
+.eyebrowText {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--c-gold);
+}
+
+/* Title */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--c-brown-dark);
+  margin-bottom: var(--spacing-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.titleRow {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.1;
+}
+
+.titleWord {
+  display: inline-block;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--c-text-muted);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-8);
+  font-weight: 300;
+}
+
+/* Gold divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+}
+.dividerLine {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--c-gold), transparent);
+}
+body.lang-ar .dividerLine:last-child {
+  background: linear-gradient(270deg, var(--c-gold), transparent);
+}
+.dividerDiamond {
+  color: var(--c-gold);
+  font-size: 0.45rem;
+  opacity: 0.7;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.breadLink {
+  color: var(--c-text-muted);
+  transition: color 0.3s;
+}
+.breadLink:hover { color: var(--c-brown); }
+.breadSep {
+  color: var(--c-border);
+}
+.breadCurrent {
+  color: var(--c-brown);
+}
+
+@media (max-width: 900px) {
+  .inner.hasImage {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  body.lang-ar .inner.hasImage {
+    flex-direction: column;
+  }
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .heroImageWrap { margin-top: var(--spacing-8); }
+}
+
+@media (max-width: 768px) {
+  .pageHero { padding: 140px 0 70px; }
+  .inner { align-items: center; text-align: center; }
+  body.lang-ar .inner { align-items: center; }
+  .bgLines { display: none; }
+}

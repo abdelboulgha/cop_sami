@@ -1,0 +1,293 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600;700&family=Outfit:wght@300;400;500&family=Cairo:wght@400;600;700&family=Readex+Pro:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Brand Colors - Luxury Edition */
+  --c-brown:        #8C7462;
+  --c-brown-light:  #A38E7E;
+  --c-brown-dark:   #2C241D;
+  --c-green:        #69735A;
+  --c-green-light:  #878F7A;
+  --c-gold:         #CCA770;
+  --c-gold-light:   #DEC498;
+
+  /* Neutrals - High-End Apothecary */
+  --c-bg:           #FAFAFA;
+  --c-bg-warm:      #F5F3EC;
+  --c-surface:      #FFFFFF;
+  --c-dark:         #1A1A1A;
+  --c-text:         #2B2B2B;
+  --c-text-muted:   #737373;
+  --c-border:       rgba(0,0,0,0.06);
+  --c-border-gold:  rgba(204,167,112,0.25);
+
+  /* Fonts */
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-heading:  'Jost', sans-serif;
+  --font-body:     'Outfit', sans-serif;
+  --font-arabic:   'Readex Pro', 'Cairo', sans-serif;
+
+  /* Spacing */
+  --spacing-1:  0.25rem;
+  --spacing-2:  0.5rem;
+  --spacing-3:  0.75rem;
+  --spacing-4:  1rem;
+  --spacing-6:  1.5rem;
+  --spacing-8:  2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+  --spacing-48: 12rem;
+  --spacing-56: 14rem;
+
+  /* Layout */
+  --container-max: 1600px;
+  --radius-sm:     2px;
+  --radius-md:     4px;
+  --radius-lg:     8px;
+
+  /* Shadows - Super subtle */
+  --shadow-sm:  0 4px 20px rgba(0,0,0,0.03);
+  --shadow-md:  0 12px 40px rgba(0,0,0,0.04);
+  --shadow-lg:  0 24px 80px rgba(0,0,0,0.06);
+  --shadow-gold: 0 16px 40px rgba(204,167,112,0.12);
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.lang-ar {
+  font-family: var(--font-arabic), var(--font-body);
+  direction: rtl;
+  text-align: right;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--c-brown-dark);
+}
+
+body.lang-ar h1,
+body.lang-ar h2,
+body.lang-ar h3,
+body.lang-ar h4 {
+  font-family: var(--font-arabic);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--c-text-muted);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+strong, b {
+  font-weight: 500;
+  color: var(--c-brown-dark);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+ul { list-style: none; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Layout ─────────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+}
+
+.section {
+  padding: var(--spacing-40) 0;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .section { padding: var(--spacing-24) 0; }
+}
+
+/* ─── Heading Classes ────────────────────────────────────────────────────── */
+.heading-display {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.heading-primary {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.heading-secondary {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 300;
+}
+
+.subheading {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.65rem; /* Even smaller, more refined */
+  font-weight: 500;
+  color: var(--c-brown);
+  display: block;
+  margin-bottom: var(--spacing-4);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 48px;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  color: var(--c-brown-dark);
+}
+
+/* Primary: ultra-chic thin bordered dark button */
+.btn-primary {
+  background: var(--c-brown-dark);
+  color: var(--c-bg);
+  border-color: var(--c-brown-dark);
+}
+.btn-primary:hover {
+  background: var(--c-gold);
+  border-color: var(--c-gold);
+  color: var(--c-brown-dark);
+}
+
+/* Outline */
+.btn-outline {
+  color: var(--c-brown-dark);
+  border-color: var(--c-border);
+}
+.btn-outline:hover {
+  background: var(--c-brown-dark);
+  border-color: var(--c-brown-dark);
+  color: var(--c-bg);
+}
+
+/* Light (for dark bg) */
+.btn-light {
+  color: var(--c-bg);
+  border-color: rgba(255,255,255,0.2);
+}
+.btn-light:hover {
+  background: var(--c-bg);
+  color: var(--c-brown-dark);
+}
+
+/* ─── Glassmorphism ───────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(251, 247, 242, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* ─── Decorative utilities ───────────────────────────────────────────────── */
+/* Thin gold divider line */
+.gold-line {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--c-gold), transparent);
+  margin-bottom: var(--spacing-6);
+}
+
+/* Very faint Moroccan dot-grid background */
+.pattern-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: radial-gradient(var(--c-brown) 1px, transparent 1px);
+  background-size: 28px 28px;
+  z-index: 0;
+}
+
+/* Ambient glow blob */
+.ambient-glow {
+  position: fixed;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 65%);
+  border-radius: 50%;
+  top: -15%;
+  right: -15%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Section label decoration ───────────────────────────────────────────── */
+.section-intro {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+.section-intro::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--c-gold);
+  flex-shrink: 0;
+}
+body.lang-ar .section-intro { flex-direction: row-reverse; }
+body.lang-ar .section-intro::before { order: 1; }

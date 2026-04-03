@@ -1,0 +1,237 @@
+﻿.section {
+  background: var(--c-surface);
+  padding: var(--spacing-24) 0 var(--spacing-40);
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--spacing-16);
+  align-items: start;
+}
+
+/* ── Left info ───────────────────────────────────────────────────────────── */
+.infoTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: 300;
+  color: var(--c-brown-dark);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-4);
+  white-space: pre-line;
+}
+
+.infoDivider {
+  width: 40px;
+  height: 1px;
+  background: var(--c-gold);
+  margin-bottom: var(--spacing-6);
+}
+
+.infoDesc {
+  font-size: 1rem;
+  color: var(--c-text-muted);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-12);
+  max-width: 380px;
+}
+
+/* Contact items */
+.contactItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.iconBox {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--c-border-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold);
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.contactItem:hover .iconBox {
+  background: rgba(201,168,76,0.08);
+  border-color: var(--c-gold);
+}
+
+.contactText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 4px;
+}
+
+.contactLabel {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--c-text-muted);
+}
+
+.contactText a,
+.contactText span {
+  font-size: 0.95rem;
+  color: var(--c-brown-dark);
+  line-height: 1.5;
+  transition: color 0.3s;
+}
+.contactText a:hover { color: var(--c-gold); }
+
+/* ── Form wrapper ────────────────────────────────────────────────────────── */
+.formWrapper {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  padding: var(--spacing-12);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--c-text-muted);
+}
+
+.input {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--c-text);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0;
+  appearance: none;
+  width: 100%;
+}
+.input::placeholder { color: var(--c-text-muted); opacity: 0.5; }
+.input:focus {
+  border-color: var(--c-gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Submit button */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 44px;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background: var(--c-brown-dark);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease, gap 0.3s ease;
+  align-self: flex-start;
+}
+.submitBtn:hover:not(:disabled) {
+  background: var(--c-gold);
+  color: var(--c-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(201,168,76,0.3);
+  gap: 16px;
+}
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.submitArrow { transition: transform 0.3s ease; }
+.submitBtn:hover .submitArrow { transform: translateX(4px); }
+body.lang-ar .submitArrow { transform: rotate(180deg); }
+
+/* ── Success message ─────────────────────────────────────────────────────── */
+.successMsg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-8);
+  gap: var(--spacing-4);
+}
+
+.successIcon {
+  color: var(--c-gold);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-4);
+}
+
+.successMsg h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--c-brown-dark);
+  font-weight: 400;
+}
+
+.successMsg p {
+  font-size: 1rem;
+  color: var(--c-text-muted);
+}
+
+.resetBtn {
+  margin-top: var(--spacing-6);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--c-brown);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid var(--c-border);
+  padding-bottom: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.resetBtn:hover { color: var(--c-gold); border-color: var(--c-gold); }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .row  { grid-template-columns: 1fr; }
+  .formWrapper { padding: var(--spacing-8); }
+  .infoDesc { max-width: 100%; }
+  .submitBtn { align-self: stretch; }
+}

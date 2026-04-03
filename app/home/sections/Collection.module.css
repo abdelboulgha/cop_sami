@@ -1,0 +1,168 @@
+﻿.collectionSection {
+  background: var(--c-surface); /* Light theme */
+  color: var(--c-brown-dark);
+  overflow: hidden; /* Important for horizontal scroll */
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────── */
+.header {
+  padding: var(--spacing-40) 5% var(--spacing-20);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.subheading {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--c-gold); 
+  margin-bottom: var(--spacing-4);
+  font-weight: 600;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--c-brown-dark);
+}
+.title span {
+  font-style: italic;
+  color: var(--c-gold); 
+}
+
+.headerDesc {
+  max-width: 350px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--c-text-muted);
+  margin-bottom: 12px;
+}
+
+/* ── horizontal Scroll Container ─────────────────────── */
+.horizontalScrollWrapper {
+  width: 100%;
+  padding-bottom: var(--spacing-40);
+  padding-top: var(--spacing-8);
+  overflow: hidden;
+}
+
+.scrollContainer {
+  display: flex;
+  gap: var(--spacing-8);
+  padding: 0 5%;
+  height: 65vh; /* Responsive card height */
+  min-height: 400px;
+  width: max-content; /* Critical for horizontal GSAP scrolling */
+}
+
+/* ── Cards ───────────────────────────────────────────────────────── */
+.card {
+  position: relative;
+  width: clamp(300px, 28vw, 400px);
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0; /* Important */
+  cursor: pointer;
+  background: var(--c-surface); /* fallback */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* Soft elegant shadow */
+}
+
+.cardImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.card:hover .cardImage {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Dark gradient overlay at the bottom for text readability */
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+}
+
+/* Top Badge */
+.badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: rgba(255, 255, 255, 0.9); /* Frosted white glass */
+  backdrop-filter: blur(4px);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--c-brown-dark);
+  font-weight: 600;
+}
+
+/* Bottom Content */
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 8px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cardDesc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-8);
+  }
+}
+@media (max-width: 768px) {
+  .scrollContainer {
+    height: 55vh;
+    padding: 0 5% var(--spacing-16);
+  }
+  .card {
+    width: 280px;
+  }
+}

@@ -1,7 +1,7 @@
-import HeroCinematic from '../../components/HeroCinematic';
-import ProductsInfo from '../../components/ProductsInfo';
-import ProductGrid from '../../components/ProductGrid';
-import Cta from '../../components/Cta';
+import HeroCinematic from "@/app/produits/sections/HeroCinematic";
+import ProductsInfo from "@/app/produits/sections/ProductsInfo";
+import ProductGrid from "@/app/produits/sections/ProductGrid";
+import Cta from "@/app/produits/sections/Cta";
 
 export const metadata = {
   title: 'Nos Produits | Argan Product by Sami',

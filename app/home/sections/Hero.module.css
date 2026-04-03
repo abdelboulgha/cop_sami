@@ -1,0 +1,149 @@
+﻿.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--c-dark);
+}
+
+.videoBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  object-position: center;
+  /* Filter updated via JS */
+  transform-origin: center;
+}
+
+.overlayColor {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 16, 14, 0.55); /* Elegant dark grey tint */
+}
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+.heroGrid {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 4vh;
+}
+
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-10);
+  opacity: 0;
+}
+.eyebrowLine {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.eyebrowText {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Title */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 10vw, 11rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: var(--spacing-10);
+}
+
+.titleRow {
+  display: block;
+  overflow: hidden;
+  line-height: 1.1;
+}
+
+.indent {
+  padding-left: 12%; 
+}
+body.lang-ar .indent {
+  padding-left: 0;
+  padding-right: 12%;
+}
+
+.italic {
+  font-style: italic;
+  color: var(--c-gold-light);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.animWord {
+  display: inline-block;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--spacing-16);
+  max-width: 520px;
+  font-weight: 300;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+}
+
+.btnPrimary {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+}
+.btnPrimary:hover {
+  background: #fff;
+  color: var(--c-dark);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .eyebrowLine { width: 20px; }
+  .title { font-size: clamp(3.5rem, 15vw, 6rem); }
+  .subtitle { font-size: 0.95rem; }
+  .indent { padding-left: 0; }
+  body.lang-ar .indent { padding-right: 0; }
+}
