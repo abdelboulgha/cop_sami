@@ -40,7 +40,7 @@ export default function ProductsInfo() {
 
   return (
     <section id="products" className={styles.productsSection} ref={containerRef}>
-      <div className="container">
+      <div className={styles.inner}>
 
         <div className={styles.header}>
           <div className="section-intro">

@@ -5,10 +5,18 @@
   overflow: hidden;
 }
 
+/* ── Inner wrapper ───────────────────────────────────────────────────────── */
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+}
+
 /* ── Header ──────────────────────────────────────────────────────────────── */
 .header {
-  max-width: 760px;
+  max-width: 700px;
   margin: 0 auto var(--spacing-24);
+  text-align: center;
   opacity: 0;
   transform: translateY(40px);
 }
