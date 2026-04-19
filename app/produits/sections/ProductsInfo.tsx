@@ -62,7 +62,7 @@ export default function ProductsInfo() {
         <div className={`${styles.card} ${styles.cardReverse}`}>
           <div className={styles.imgFrame}>
             <Image
-              src="/assets/hero_argan_oil.png"
+              src="/assets/huile_amande_amere.jpeg"
               alt="Huile d'Argan Alimentaire"
               fill
               className={styles.img}
@@ -96,8 +96,8 @@ export default function ProductsInfo() {
         <div className={styles.card}>
           <div className={styles.imgFrame}>
             <Image
-              src="/assets/cosmetics_products.png"
-              alt="Argan Cosmétique Pur"
+              src="/assets/huile_amande_douce.jpeg"
+              alt="Huile d'Amande Douce"
               fill
               className={styles.img}
             />

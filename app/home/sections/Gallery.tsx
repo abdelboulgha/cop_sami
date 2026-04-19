@@ -10,13 +10,12 @@ import { useLang } from "@/context/LanguageContext";
 gsap.registerPlugin(ScrollTrigger);
 
 const galleryImages = [
-  '/assets/hero_argan_oil.png', 
-  '/assets/honey_jar.png',      
-  '/assets/artisanal_soap.png', 
-  '/assets/medicinal_plants.png', 
-  '/assets/cosmetics_products.png', 
-  '/assets/premium_amlou.png', 
-  '/assets/premium_cosmetic.png', 
+  '/assets/huile_argan_alimentaire.jpeg',
+  '/assets/huile_ricin.jpeg',
+  '/assets/huile_amande_amere.jpeg',
+  '/assets/huile_sesame.jpeg',
+  '/assets/huile_amande_douce.jpeg',
+  '/assets/huile_coco.jpeg',
 ];
 
 export default function Gallery() {
