@@ -155,8 +155,17 @@ export default function ProductGrid() {
                   </span>
                 )}
                 <div className={styles.cardOverlay}>
-                  <a href="#" className={styles.overlayBtn}>
-                    {t("Découvrir", "اكتشف")}
+                  <a
+                    href={`https://wa.me/212605925032?text=${encodeURIComponent(
+                      lang === 'ar'
+                        ? `مرحباً، أريد الطلب: ${p.titleAr}`
+                        : `Bonjour, je souhaite commander : ${p.titleFr}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.overlayBtn}
+                  >
+                    {t("Commander", "اطلب الآن")}
                   </a>
                 </div>
               </div>
@@ -171,7 +180,16 @@ export default function ProductGrid() {
                   {lang === 'ar' ? p.descAr : p.descFr}
                 </p>
                 <div className={styles.productFooter}>
-                  <a href="#" className={styles.addButton}>
+                  <a
+                    href={`https://wa.me/212605925032?text=${encodeURIComponent(
+                      lang === 'ar'
+                        ? `مرحباً، أريد الطلب: ${p.titleAr}`
+                        : `Bonjour, je souhaite commander : ${p.titleFr}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.addButton}
+                  >
                     {t('Commander', 'اطلب الآن')}
                   </a>
                 </div>
