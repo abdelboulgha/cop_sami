@@ -40,7 +40,7 @@ export default function ProductsInfo() {
 
   return (
     <section id="products" className={styles.productsSection} ref={containerRef}>
-      <div className={styles.inner}>
+      <div className={styles.inner} >
 
         <div className={styles.header}>
           <div className="section-intro">
@@ -71,22 +71,26 @@ export default function ProductsInfo() {
             <span className={styles.imgTag}>{t('Gastronomie', 'فن الطهو')}</span>
           </div>
           <div className={styles.cardContent}>
-            <span className="subheading">{t('Culinaire', 'طهو')}</span>
-            <h3 className={styles.cardTitle}>{t('Huile Alimentaire', 'زيت الطعام')}</h3>
+            <span className="subheading">{t('Alimentaire', 'غذائي')}</span>
+            <h3 className={styles.cardTitle}>{t("Huile d'Argan Alimentaire", 'زيت الأرغان للأكل')}</h3>
             <div className={styles.cardDivider} />
             <p className={styles.cardDesc}>
               {t(
-                "Nos amandons sont doucement grillés pour libérer un riche parfum de noisette torréfiée. Parfaite pour exalter vos créations culinaires et créer l'authentique Amlou marocain.",
-                "يتم تحميص لوزنا بلطف لإطلاق رائحة غنية من البندق المحمص. مثالي لرفع إبداعاتك الطهوية وصنع أملو المغربي الأصيل."
+                "Huile d'argan pure pressée à froid, certifiée ONSSA. Idéale pour sublimer vos salades, tajines et le traditionnel Amlou marocain.",
+                "زيت أرغان نقي معصور على البارد، معتمد من ONSSA. مثالي لتزيين سلطاتك والطاجين والأملو المغربي التقليدي."
               )}
             </p>
             <ul className={styles.featureList}>
               <li>{t('Pressée à froid', 'معصور على البارد')}</li>
-              <li>{t('Riche en Oméga-6', 'غني بأوميغا 6')}</li>
-              <li>{t('Certifiée Bio', 'معتمد عضوي')}</li>
+              <li>{t('Certifiée ONSSA', 'معتمد من ONSSA')}</li>
+              <li>{t('100% naturelle', '100% طبيعي')}</li>
             </ul>
-            <a href="#" className={styles.cardBtn}>
-              {t('Découvrir l\u2019Alimentaire', 'استكشف المنتجات الغذائية')}
+            <a
+              href={`https://wa.me/212605925032?text=${encodeURIComponent("Bonjour, je souhaite commander : Huile d'Argan Alimentaire")}`}
+              target="_blank" rel="noopener noreferrer"
+              className={styles.cardBtn}
+            >
+              {t('Commander sur WhatsApp', 'اطلب عبر واتساب')}
               <span className={styles.arrow}>→</span>
             </a>
           </div>
@@ -96,7 +100,7 @@ export default function ProductsInfo() {
         <div className={styles.card}>
           <div className={styles.imgFrame}>
             <Image
-              src="/assets/huile_amande_douce.jpeg"
+              src="/assets/huile_argan_alimentaire.jpeg"
               alt="Huile d'Amande Douce"
               fill
               className={styles.img}
@@ -105,22 +109,26 @@ export default function ProductsInfo() {
             <span className={styles.imgTag}>{t('Beauté & Soins', 'الجمال')}</span>
           </div>
           <div className={styles.cardContent}>
-            <span className="subheading">{t('Cosmétique', 'تجميل')}</span>
-            <h3 className={styles.cardTitle}>{t("L\u2019Élixir Cosmétique", 'إكسير التجميل')}</h3>
+            <span className="subheading">{t('Soins', 'عناية')}</span>
+            <h3 className={styles.cardTitle}>{t("Huile d'Amande Amère", 'زيت اللوز المر')}</h3>
             <div className={styles.cardDivider} />
             <p className={styles.cardDesc}>
               {t(
-                "Pressée à froid à partir d'amandons crus, gorgée de vitamines E et d'acides gras essentiels — un hydratant miraculeux pour la régénération de la peau et des cheveux.",
-                "معصور على البارد من لوز نيء، غني بفيتامين هـ والأحماض الدهنية الأساسية — مرطب معجزة لتجديد البشرة والشعر."
+                "Prunus amygdalus amara kernel oil. Précieuse pour unifier le teint, atténuer les taches et offrir une douceur incomparable à la peau et aux cheveux.",
+                "زيت نواة اللوز المر. ثمين لتوحيد البشرة، تخفيف البقع الداكنة ومنح نعومة لا مثيل لها للبشرة والشعر."
               )}
             </p>
             <ul className={styles.featureList}>
-              <li>{t('Anti-âge naturel', 'مضاد للشيخوخة')}</li>
+              <li>{t('Unifie le teint', 'يوحد البشرة')}</li>
               <li>{t('Soin cheveux & peau', 'للشعر والبشرة')}</li>
               <li>{t('Sans conservateurs', 'بدون مواد حافظة')}</li>
             </ul>
-            <a href="#" className={styles.cardBtn}>
-              {t('Révélez votre Beauté', 'اكتشفي جمالك')}
+            <a
+              href={`https://wa.me/212605925032?text=${encodeURIComponent("Bonjour, je souhaite commander : Huile d'Amande Amère")}`}
+              target="_blank" rel="noopener noreferrer"
+              className={styles.cardBtn}
+            >
+              {t('Commander sur WhatsApp', 'اطلب عبر واتساب')}
               <span className={styles.arrow}>→</span>
             </a>
           </div>

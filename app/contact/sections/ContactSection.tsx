@@ -73,6 +73,13 @@ export default function ContactSection() {
                 </div>
               </div>
               <div className={styles.contactItem}>
+                <div className={styles.iconBox}><MailIcon /></div>
+                <div className={styles.contactText}>
+                  <span className={styles.contactLabel}>{t('Email', 'البريد الإلكتروني')}</span>
+                  <a href="mailto:Cooperativealmawlid@gmail.com">Cooperativealmawlid@gmail.com</a>
+                </div>
+              </div>
+              <div className={styles.contactItem}>
                 <div className={styles.iconBox}><PinIcon /></div>
                 <div className={styles.contactText}>
                   <span className={styles.contactLabel}>{t('Adresse', 'العنوان')}</span>

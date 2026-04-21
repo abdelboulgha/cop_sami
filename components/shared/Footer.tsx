@@ -91,9 +91,9 @@ export default function Footer() {
                 <span className={styles.contactIcon}>✆</span>
                 +212 605 925 032
               </a>
-              <a href="mailto:contact@argan-sami.ma" className={styles.contactItem}>
+              <a href="mailto:Cooperativealmawlid@gmail.com" className={styles.contactItem}>
                 <span className={styles.contactIcon}>✉</span>
-                contact@argan-sami.ma
+                Cooperativealmawlid@gmail.com
               </a>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>⊙</span>
