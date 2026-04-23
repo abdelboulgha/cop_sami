@@ -14,8 +14,8 @@ export default function Story() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.fromTo(`.${styles.quoteLine}`, { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: 'power3.inOut', scrollTrigger: { trigger: `.${styles.introQuote}`, start: 'top 80%' } });
-      gsap.fromTo(`.${styles.quoteText}`, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.5, ease: 'power2.out', scrollTrigger: { trigger: `.${styles.introQuote}`, start: 'top 75%' } });
+      gsap.fromTo(`.${styles.quoteLine}`, { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: 'power3.inOut', scrollTrigger: { trigger: `.${styles.introQuoteReel}`, start: 'top 80%' } });
+      gsap.fromTo(`.${styles.quoteText}`, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.5, ease: 'power2.out', scrollTrigger: { trigger: `.${styles.introQuoteReel}`, start: 'top 75%' } });
       gsap.utils.toArray(`.${styles.imageParallaxWrap}`).forEach((wrap: any) => {
         gsap.to(wrap, { yPercent: 25, ease: 'none', scrollTrigger: { trigger: wrap.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
       });
@@ -28,13 +28,23 @@ export default function Story() {
 
   return (
     <div ref={comp}>
-      <section className={styles.introQuote}>
-        <div className={styles.quoteLine} />
-        <h2 className={styles.quoteText}>
-          {t("\"Notre volonté a toujours été claire : honorer les richesses de la terre marocaine en n'offrant que l'excellence pure.\"", "\"لطالما كانت إرادتنا واضحة: تكريم ثروات الأرض المغربية من خلال تقديم التميز النقي فقط.\"")}
-        </h2>
-        <div className={styles.quoteLine} />
-        <p className={styles.quoteAuthor}>{t("— Fondateur, Argan Product by Sami", "— المؤسس، أركان برودكت باي سامي")}</p>
+      <section className={styles.introQuoteReel}>
+        <div className={styles.reelVideoWrap}>
+          <video
+            src="/videos/C0215.mp4"
+            controls
+            playsInline
+            className={styles.reelVideo}
+          />
+        </div>
+        <div className={styles.introQuoteContent}>
+          <div className={styles.quoteLine} />
+          <h2 className={styles.quoteText}>
+            {t("\"Notre volonté a toujours été claire : honorer les richesses de la terre marocaine en n'offrant que l'excellence pure.\"", "\"لطالما كانت إرادتنا واضحة: تكريم ثروات الأرض المغربية من خلال تقديم التميز النقي فقط.\"")}
+          </h2>
+          <div className={styles.quoteLine} />
+          <p className={styles.quoteAuthor}>{t("— Fondateur, Argan Product by Sami", "— المؤسس، أركان برودكت باي سامي")}</p>
+        </div>
       </section>
 
       <section className={styles.section}>
